@@ -1,0 +1,23 @@
+.KYC {
+    width: 50%;
+    display: grid;
+    margin-top: 7rem;
+    flex-direction: column;
+    margin-inline: auto;
+    /* This is the absolute key to centering your information */
+    gap: 0.5rem;
+       
+}
+.form-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-item label {
+    min-width: 120px; 
+    /* margin-right: 10px; */
+  }
+  .form-item input {
+    width: 100%;
+  }

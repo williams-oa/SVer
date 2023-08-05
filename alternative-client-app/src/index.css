@@ -35,7 +35,6 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    /* color: blue; */
     /* color: hsl(var(--gray-hue), 24%, 64%); */
     color: var(--color-gray-200);
     line-height: 1.7;

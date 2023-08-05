@@ -1,148 +1,128 @@
-import {SiBitcoinsv} from 'react-icons/si'
-
-
+import { SiBitcoinsv } from "react-icons/si";
+import { SiNike } from "react-icons/si";
+import { SiMcdonalds } from "react-icons/si";
+import { SiApple } from "react-icons/si";
+import {AiFillHome} from 'react-icons/ai'
 
 export const links = [
-    {
-        name: "Home",
-        path: '/'
-    },
-    {
-        name: "About",
-        path: '/about'
-    },
-    {
-        name: "Register",
-        path: '/register'
-    },
-    {
-        name: "Users",
-        path: '/users'
-    },
-    {
-        name: "Contact",
-        path: '/contact'
-    }
-]
-
-
-
-
-
-
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+  {
+    name: "Register",
+    path: "/register",
+  },
+  {
+    name: "Vendors",
+    path: "/vendors",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
+];
 
 export const offers = [
-    {
-        id: 1,
-        icon: <SiBitcoinsv/>,
-        title: "Fund Allocation",
-        info: "Send BSV to a recipient and restrict spendability. A whole new ballgame to checks and balances for financial responsibility.",
-        path: "/offers/111"
-    },
-    {
-        id: 2,
-        icon: <SiBitcoinsv/>,
-        title: "Personal Financing",
-        info: "Upgrade your personal financial planning by restricting your spending based on your choice",
-        path: "/offers/222"
-    },
-    // {
-    //     id: 3,
-    //     icon: <SiOpenaigym/>,
-    //     title: "Program Three",
-    //     info: "This is the day that the lord has made. We will rejoice!",
-    //     path: "/programs/333"
-    // },
-    // {
-    //     id: 4,
-    //     icon: <SiOpenaigym/>,
-    //     title: "Program Four",
-    //     info: "This is the day that the lord has made. We will rejoice!",
-    //     path: "/programs/444"
-    // }
-]
+  {
+    id: 1,
+    icon: <SiBitcoinsv />,
+    title: "Fund Allocation",
+    info: "Send BSV to a recipient and restrict spendability. A whole new ballgame to checks and balances for financial responsibility.",
+    path: "/offers/111",
+  },
+  {
+    id: 2,
+    icon: <SiBitcoinsv />,
+    title: "Personal Financing",
+    info: "Upgrade your personal financial planning by restricting your spending based on your choice",
+    path: "/offers/222",
+  },
+  // {
+  //     id: 3,
+  //     icon: <SiOpenaigym/>,
+  //     title: "Program Three",
+  //     info: "This is the day that the lord has made. We will rejoice!",
+  //     path: "/programs/333"
+  // },
+  // {
+  //     id: 4,
+  //     icon: <SiOpenaigym/>,
+  //     title: "Program Four",
+  //     info: "This is the day that the lord has made. We will rejoice!",
+  //     path: "/programs/444"
+  // }
+];
 
-
-
-
-
-
-
-
-export const values = [
-    {
-        id: 1,
-        icon: <SiBitcoinsv/>,
-        title: "Value One",
-        desc: "Placeat quidem facere dicta modi? Pariatur exercitationem illum."
-    },
-    {
-        id: 2,
-        icon: <SiBitcoinsv/>,
-        title: "Value Two",
-        desc: "Placeat quidem facere dicta modi? Pariatur exercitationem illum."
-    },
-    // {
-    //     id: 3,
-    //     icon: <SiOpenaigym/>,
-    //     title: "Value Three",
-    //     desc: "Placeat quidem facere dicta modi? Pariatur exercitationem illum."
-    // },
-    // {
-    //     id: 4,
-    //     icon: <SiOpenaigym/>,
-    //     title: "Value Four",
-    //     desc: "Placeat quidem facere dicta modi? Pariatur exercitationem illum."
-    // }
-]
-
-
-
-
-
-
-
-
+export const vendors = [
+  {
+    id: 1,
+    icon: <SiNike />,
+    title: "Nike",
+    desc: "Maximize performance and style with Nike's innovative products.",
+  },
+  {
+    id: 2,
+    icon: <SiMcdonalds />,
+    title: "McDonalds",
+    desc: "Savor joy with McDonald's iconic flavors and moments.",
+  },
+  {
+      id: 3,
+      icon: <SiApple/>,
+      title: "Apple",
+      desc: "Innovate life with Apple's cutting-edge technology and design."
+  },
+  {
+      id: 4,
+      icon: <AiFillHome/>,
+      title: "Homes for Rent",
+      desc: "Find comfort in diverse rental properties with us."
+  }
+];
 
 export const faqs = [
-    {
-        id: 1,
-        question: "How often should I exercise?",
-        answer: "Consectetur adipisicing elit. Non ipsa dolorem, rem consequatur eum omnis ex, fuga temporibus qui nesciunt odio aliquam commodi culpa inventore ut similique repellendus perferendis sint!"
-    },
-    {
-        id: 2,
-        question: "What time of day is best to work out?",
-        answer: "Distinctio nihil blanditiis accusantium atque, quo maxime inventore eum! Cum dolorem quibusdam amet et qui. Eos, omnis beatae? Quas, est at! Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit."
-    },
-    {
-        id: 3,
-        question: "How long should my workouts be?",
-        answer: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content."
-    },
-    {
-        id: 4,
-        question: "Do I need to warm up before my workouts?",
-        answer: "Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit, consequatur quibusdam dignissimos cum labore possimus placeat consectetur nisi cupiditate? Qui totam est omnis dolor nobis quisquam veritatis a!"
-    },
-    {
-        id: 5,
-        question: "Should I do strength training, cardio or both?",
-        answer: "Maiores fuga, cum praesentium esse laudantium! Distinctio nihil blanditiis accusantium atque, quo maxime inventore eum! Cum dolorem quibusdam amet et qui."
-    },
-    {
-        id: 6,
-        question: "Should I lift weights for strength training?",
-        answer: "Quas, est at! Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit, consequatur quibusdam dignissimos cum labore possimus placeat consectetur nisi cupiditate."
-    }
-]
-
-
-
-
-
-
-
+  {
+    id: 1,
+    question: "How often should I exercise?",
+    answer:
+      "Consectetur adipisicing elit. Non ipsa dolorem, rem consequatur eum omnis ex, fuga temporibus qui nesciunt odio aliquam commodi culpa inventore ut similique repellendus perferendis sint!",
+  },
+  {
+    id: 2,
+    question: "What time of day is best to work out?",
+    answer:
+      "Distinctio nihil blanditiis accusantium atque, quo maxime inventore eum! Cum dolorem quibusdam amet et qui. Eos, omnis beatae? Quas, est at! Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit.",
+  },
+  {
+    id: 3,
+    question: "How long should my workouts be?",
+    answer:
+      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
+  },
+  {
+    id: 4,
+    question: "Do I need to warm up before my workouts?",
+    answer:
+      "Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit, consequatur quibusdam dignissimos cum labore possimus placeat consectetur nisi cupiditate? Qui totam est omnis dolor nobis quisquam veritatis a!",
+  },
+  {
+    id: 5,
+    question: "Should I do strength training, cardio or both?",
+    answer:
+      "Maiores fuga, cum praesentium esse laudantium! Distinctio nihil blanditiis accusantium atque, quo maxime inventore eum! Cum dolorem quibusdam amet et qui.",
+  },
+  {
+    id: 6,
+    question: "Should I lift weights for strength training?",
+    answer:
+      "Quas, est at! Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit, consequatur quibusdam dignissimos cum labore possimus placeat consectetur nisi cupiditate.",
+  },
+];
 
 // export const testimonials = [
 //     {
@@ -182,85 +162,71 @@ export const faqs = [
 //     }
 // ]
 
-
-
-
-
-
-
 export const plans = [
-    {
-        id: 1,
-        name: 'Silver Package',
-        desc: 'This package is perfect for beginners who need constant help',
-        price: 29.99,
-        features: [
-            {feature: 'First Feature', available: true},
-            {feature: 'Second Feature', available: true},
-            {feature: 'Third Feature', available: true},
-            {feature: 'Fourth Feature', available: true},
-            {feature: 'Fifth Feature', available: true},
-            {feature: 'Fifth Feature Plus', available: false},
-            {feature: 'Sixth Feature', available: false},
-            {feature: 'Seventh Feature', available: false},
-            {feature: 'Seventh Feature Plus', available: false},
-            {feature: 'Eighth Feature', available: false},
-            {feature: 'Ninth Feature', available: false},
-            {feature: 'Tenth Feature', available: false},
-            {feature: 'Eleventh Feature', available: false}
-        ]
-    },
-    {
-        id: 2,
-        name: 'Gold Package',
-        desc: 'This is the perfect package for beginners who know what their doing',
-        price: 49.99,
-        features: [
-            {feature: 'First Feature', available: true},
-            {feature: 'Second Feature', available: true},
-            {feature: 'Third Feature', available: true},
-            {feature: 'Fourth Feature', available: true},
-            {feature: 'Fifth Feature', available: true},
-            {feature: 'Fifth Feature Plus', available: true},
-            {feature: 'Sixth Feature', available: true},
-            {feature: 'Seventh Feature', available: true},
-            {feature: 'Seventh Feature Plus', available: true},
-            {feature: 'Eighth Feature', available: false},
-            {feature: 'Ninth Feature', available: false},
-            {feature: 'Tenth Feature', available: false},
-            {feature: 'Eleventh Feature', available: false}
-        ]
-    },
-    {
-        id: 3,
-        name: 'Platinum Package',
-        desc: 'This package is perfect for busy people who need home service',
-        price: 89.99,
-        features: [
-            {feature: 'First Feature', available: true},
-            {feature: 'Second Feature', available: true},
-            {feature: 'Third Feature', available: true},
-            {feature: 'Fourth Feature', available: true},
-            {feature: 'Fifth Feature', available: true},
-            {feature: 'Fifth Feature Plus', available: true},
-            {feature: 'Sixth Feature', available: true},
-            {feature: 'Seventh Feature', available: true},
-            {feature: 'Seventh Feature Plus', available: true},
-            {feature: 'Eighth Feature', available: true},
-            {feature: 'Ninth Feature', available: true},
-            {feature: 'Tenth Feature', available: true},
-            {feature: 'Eleventh Feature', available: true}
-        ]
-    }
-]
-
-
-
-
-
-
-
-
+  {
+    id: 1,
+    name: "Silver Package",
+    desc: "This package is perfect for beginners who need constant help",
+    price: 29.99,
+    features: [
+      { feature: "First Feature", available: true },
+      { feature: "Second Feature", available: true },
+      { feature: "Third Feature", available: true },
+      { feature: "Fourth Feature", available: true },
+      { feature: "Fifth Feature", available: true },
+      { feature: "Fifth Feature Plus", available: false },
+      { feature: "Sixth Feature", available: false },
+      { feature: "Seventh Feature", available: false },
+      { feature: "Seventh Feature Plus", available: false },
+      { feature: "Eighth Feature", available: false },
+      { feature: "Ninth Feature", available: false },
+      { feature: "Tenth Feature", available: false },
+      { feature: "Eleventh Feature", available: false },
+    ],
+  },
+  {
+    id: 2,
+    name: "Gold Package",
+    desc: "This is the perfect package for beginners who know what their doing",
+    price: 49.99,
+    features: [
+      { feature: "First Feature", available: true },
+      { feature: "Second Feature", available: true },
+      { feature: "Third Feature", available: true },
+      { feature: "Fourth Feature", available: true },
+      { feature: "Fifth Feature", available: true },
+      { feature: "Fifth Feature Plus", available: true },
+      { feature: "Sixth Feature", available: true },
+      { feature: "Seventh Feature", available: true },
+      { feature: "Seventh Feature Plus", available: true },
+      { feature: "Eighth Feature", available: false },
+      { feature: "Ninth Feature", available: false },
+      { feature: "Tenth Feature", available: false },
+      { feature: "Eleventh Feature", available: false },
+    ],
+  },
+  {
+    id: 3,
+    name: "Platinum Package",
+    desc: "This package is perfect for busy people who need home service",
+    price: 89.99,
+    features: [
+      { feature: "First Feature", available: true },
+      { feature: "Second Feature", available: true },
+      { feature: "Third Feature", available: true },
+      { feature: "Fourth Feature", available: true },
+      { feature: "Fifth Feature", available: true },
+      { feature: "Fifth Feature Plus", available: true },
+      { feature: "Sixth Feature", available: true },
+      { feature: "Seventh Feature", available: true },
+      { feature: "Seventh Feature Plus", available: true },
+      { feature: "Eighth Feature", available: true },
+      { feature: "Ninth Feature", available: true },
+      { feature: "Tenth Feature", available: true },
+      { feature: "Eleventh Feature", available: true },
+    ],
+  },
+];
 
 // const Trainer1 = require('./images/trainer1.jpg')
 // const Trainer2 = require('./images/trainer2.jpg')
@@ -268,7 +234,6 @@ export const plans = [
 // const Trainer4 = require('./images/trainer4.jpg')
 // const Trainer5 = require('./images/trainer5.jpg')
 // const Trainer6 = require('./images/trainer6.jpg')
-
 
 // export const trainers = [
 //     {
