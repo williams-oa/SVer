@@ -7,7 +7,7 @@ import AboutPage from './AboutPage';
 import KYCPage from './KYCPage';
 import TransactionsPage from './TransactionPage';
 import UsersData from './users';
-import LandingPage from './Dashboard/Dashboard';
+
 function App() {
   return (
     <Router>
@@ -21,6 +21,7 @@ function App() {
             <ul>
               <li><Link to="/">HOME</Link></li>
               <li><Link to="/about">ABOUT</Link></li>
+              <li><Link to="/login">REGISTER</Link></li>
               <li><Link to="/users">USERS</Link></li>
               <li><Link to="/kyc">KYC</Link></li>
               <li><Link to="/transaction">TRANSACTION</Link></li>
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/users" element={<UsersData />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/kyc" element={<KYCPage />} />
           <Route path="/transaction" element={<TransactionsPage />} />

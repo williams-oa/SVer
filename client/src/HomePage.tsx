@@ -1,32 +1,21 @@
-import React from "react";
-
-// const HomePage = () => {
-//   return (
-//     <div>
-//       <h1>Home Page</h1>
-//       {/* Add your content for the home page */}
-//     </div>
-//   );
-// };
-
 export default function HomePageContent() {
   return (
     <div className="content">
-      <div>
-      <h1>
-        Send &amp; Receive <br />
-        <span>Safe</span> <br />
-      </h1>
-      <p className="par">
-        Join us on this journey to revolutionize the way we manage and utilize
-        grants and allowances.
-        <br />
-        Take charge of your financial accountability today with "Saver".
-        Together, we can make a difference.{" "}
-      </p>
-      <button className="cn">
-        <a href="#">JOIN US</a>
-      </button>
+      <div className="leftside">
+        <h1>
+          Send &amp; Receive <br />
+          <span>Safe</span> <br />
+        </h1>
+        <p className="par">
+          Join us on this journey to revolutionize the way we manage and utilize
+          grants and allowances.
+          <br />
+          Take charge of your financial accountability today with "Saver".
+          Together, we can make a difference.{" "}
+        </p>
+        <button className="cn">
+          <a href="#">JOIN US</a>
+        </button>
       </div>
       <div className="form">
         <input type="email" name="email" placeholder="Enter Email Here" />
