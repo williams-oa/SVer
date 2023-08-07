@@ -20,4 +20,13 @@
   }
   .form-item input {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
+  ::placeholder{
+    color: #a4a4a4;
+    font-family: Arial;
+  }
+
