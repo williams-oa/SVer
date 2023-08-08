@@ -1,6 +1,6 @@
 import Image from "../../images/shopping-cart.jpg";
 import SectionHead from "../../components/SectionHead";
-import { GiCutDiamond } from "react-icons/gi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { vendors } from "../../data";
 import Card from "../../UI/Card";
 import "./vendors.css";
@@ -15,7 +15,7 @@ const Vendors = () => {
             <img src={Image} alt="vendors__image" />
           </div>
           <div className="vendors__right">
-            <SectionHead icon={<GiCutDiamond />} title="vendors" />
+            <SectionHead icon={<AiOutlineShoppingCart />} title="vendors" />
             <p>
               We have partnered with the following vendors to meet users' needs:
             </p>

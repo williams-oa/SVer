@@ -17,9 +17,18 @@
       min-width: 250px;
     }
   
-
-
-  
+    .rightside{
+      max-width: 500px;
+      min-width: 250px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      background-color: black;
+      border-radius: 20px;
+      align-items: center;
+      padding-left: 2rem;
+    }
+ 
 
   
   .content .cn a{
@@ -32,92 +41,11 @@
     background-color: #fff;
   }
   
-  .content span{
+  .securely{
     color: #ffb116;
-    font-size: 65px
+    font-size: 60px
   }
-  
-  .form{
-    
-    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
-   
-    border-radius: 10px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .form h2{
-    width: 220px;
-    font-family: sans-serif;
-    text-align: center;
-    color: #ffb116;
-    font-size: 22px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin: 2px;
-    padding: 8px;
-  }
-  
-  .form input{
-    width: 240px;
-    height: 35px;
-    background: transparent;
-    border-bottom: 1px solid #ffb116;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    color: #fff;
-    font-size: 15px;
-    letter-spacing: 1px;
-    margin-top: 30px;
-    font-family: Arial;
-  }
-  
-  .form input:focus{
-    outline: none;
-  }
-  
-  ::placeholder{
-    color: #fff;
-    font-family: Arial;
-  }
-  
-  .btnn{
-    width: 240px;
-    height: 40px;
-    background: #ffb116;
-    border: none;
-    margin-top: 30px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: #fff;
-    transition: 0.4s ease;
-    text-align: center;
-  }
-  .btnn:hover{
-    background: #fff;
-    color: #ffb116;
-  }
-  .btnn a{
-    text-decoration: none;
-    color: #000000;
-    font-weight: bold;
-
-  }
-  .form .link{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    padding-top: 20px;
-    text-align: center;
-  }
-  .form .link a{
-    text-decoration: none;
-    color: #ffb116;
-  }
+ 
 
   /* MY BUTTON CODE */
   .btn {
@@ -156,4 +84,121 @@
 }
 .text2 {
     margin-top: 10px;
+}
+
+/* +++++++++++++++NEW FORM++++++++++++++++ */
+
+.newform {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+
+a, a:visited {
+  color: #fff;
+}
+
+.newform label {
+  min-width: 160px; 
+  
+}
+
+.newform input{
+  width: 60%;
+  padding: 4px;
+  margin-bottom: 10px;
+  margin-right: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.regform {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+ 
+  align-items: center;
+}
+
+.btnn{
+  width: 100px;
+  height: 40px;
+  background: #ffb116;
+  border: none;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.4s ease;
+  text-align: center;
+  
+}
+.btnn:hover{
+  background: #fff;
+  color: #775614;
+}
+.btnn a{
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+.link{
+    font-size: 17px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+.link a{
+    text-decoration: none;
+    color: #ffb116;
+  }
+
+/* +++++++++++++INSTRUCTIONS+++++++++++++++++++ */
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
 }

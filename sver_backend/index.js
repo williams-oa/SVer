@@ -8,12 +8,16 @@ const cartRouter = require("./routers/cartRoutes");
 const { json } = require("body-parser");
 const cron = require("node-cron");
 const updateTokenPrices = require("./updateTokenPrices");
+const cors = require("cors");
+// const bodyParser = require("body-parser");
 
 dotenv.config();
 const app = express();
 
 //body parser
 app.use(json());
+app.use(cors());
+// app.use(bodyParser.json);
 
 mongoose
   .connect(

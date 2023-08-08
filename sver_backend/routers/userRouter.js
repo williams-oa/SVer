@@ -6,8 +6,8 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(tokenVerification.verifyTokenAndAdmin, userControllers.getAllUsers);
-
+  .get(userControllers.getAllUsers);
+//tokenVerification.verifyToken,
 router
   .route("/stats")
   .get(tokenVerification.verifyTokenAndAdmin, userControllers.getStats);
@@ -22,6 +22,6 @@ router
     tokenVerification.verifyTokenAndAuthorization,
     userControllers.deleteUser
   )
-  .get(tokenVerification.verifyTokenAndAdmin, userControllers.getUser);
+  .get(userControllers.getUser);
 
 module.exports = router;

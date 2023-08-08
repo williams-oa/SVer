@@ -18,6 +18,11 @@
     min-width: 120px; 
     /* margin-right: 10px; */
   }
+  .form-usertype label {
+    min-width: 120px; 
+    margin-right: 2.5rem
+;
+  }
   .form-item input {
     width: 100%;
     padding: 10px;

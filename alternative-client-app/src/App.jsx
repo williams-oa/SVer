@@ -8,6 +8,7 @@ import Vendors from "./pages/vendors/Vendors";
 import SignUp from "./pages/signup/SignUp";
 import NotFound from "./pages/notFound/NotFound";
 import Navbar from "./components/Navbar";
+import Users from "./pages/users/Users";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="contact" element={<Contact />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="users" element={<Users />} />
       </Routes>
     </BrowserRouter>
   );
