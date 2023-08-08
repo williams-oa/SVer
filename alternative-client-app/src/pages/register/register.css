@@ -202,3 +202,15 @@ a, a:visited {
 .line {
   display: inline-block;
 }
+.success {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  align-content: center;
+  align-items: center;
+}
+.here {
+  color: #ffb116;
+  font-size: large;
+}

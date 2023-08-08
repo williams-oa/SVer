@@ -21,9 +21,6 @@ function RegDeets() {
         we can make a difference.
       </p>
       <br />
-      <Link to="/signup" className="btn lg">
-        Register
-      </Link>
       <Link to="/users" className="btn lg">
         View All Users
       </Link>

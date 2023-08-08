@@ -5,19 +5,20 @@ import { useRef, useState, useEffect } from "react";
 import RegDeets from "./RegDeets";
 import { FaInfoCircle, FaCheck, FaTimes } from "react-icons/fa";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-// import bodyParser from "body-parser";
 
-
+// +++++++++++++++++++++++++++NODE.JS BACKEND ACCESS++++++++++++++++++++++++++++++++++++++++++++++++++++++
 axios.create({
   baseURL: "http://localhost:5001",
 });
+const REGISTER_URL = "/api/v1.0.0/auth/register";
 
+//++++++++++++++++++++++++++++++USERNAME & PASSWORD DIFFICULTY REQUIREMENTS+++++++++++++++++++++++++++++++++++++
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 //must start with lower or uppercase letter, must be followed by 3-23 lower or upper case letters, digits, hyphens or underscores
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 //one lowercase, oneuppercase, one digit, one special xter, can be 8-24 xters
 
+//++++++++++++++++++++++++++++++STATES & EFFECTS+++++++++++++++++++++++++++++++++++++
 const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
@@ -25,8 +26,6 @@ const Register = () => {
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
-
-  const [email, setEmail] = useState("");
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
@@ -39,9 +38,11 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  // useEffect(()=> {
-  //   userRef.current.focus()
-  // }, [])
+  const [email, setEmail] = useState();
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
   //sets focus on the username input when the component loads. Dependency array is empty cause nothing needs to happen for it to focus on userref
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const Register = () => {
     //boolean - tests whether the user data entered satisfies the condition set by USER_REGEX
     setValidName(result);
     //if it passes the test, we assign the username as the valid name state
-    // console.log(result, user)
+    // console.log(result, user) to see the result at each stage
   }, [user]);
 
   useEffect(() => {
@@ -57,58 +58,59 @@ const Register = () => {
     setValidPwd(result); //accepts if yes
     const match = pwd === matchPwd; //checks that 2nd iteration of pwd matches the first
     setValidMatch(match); //accepts if yes
+    // console.log(result,pwd);
   }, [pwd, matchPwd]); //runs the above function if any of pwd or 2nd iteration changes
 
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd, matchPwd]); //clears error message to empty string when user changes either name pwd or match
-  
-  const history = useNavigate();
 
+  // const history = useNavigate();
+
+
+//++++++++++++++++++++++++++++++SUBMITTING REQUEST & ERROR HANDLING+++++++++++++++++++++++++++++++++++++
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submitted");
-    // if button enabled with JS hack
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
-    let userData = {
-      username: user,
-      email: email,
-      password: pwd,
-    };
+
     try {
-      fetch("http://localhost:5001/api/v1.0.0/auth/register", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }).then((response) => response.json).then(console.log(userData));
-      
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify({ username: user, email: email, password: pwd }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+      console.log(response.accessToken);
+      console.log(JSON.stringify(response));
+      setSuccess(true);
+      //clear input fields
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
       } else {
-        setErrMsg("Registration Failed");
+        const errorCode = err.response?.data?.error?.code;
+        if (errorCode === 11000) {
+          setErrMsg("Username or email Taken");
+        }
       }
       errRef.current.focus();
     }
   };
 
+  //++++++++++++++++++++++++++++++SETTING UP THE FORM+++++++++++++++++++++++++++++++++++++
   return (
     <>
-
       {success ? (
-        <section>
-          <h1>Success!</h1>
+        <section className="success">
+          <h1>You have registered successfully!</h1>
           <p>
-            <Link to="/signup">Sign in</Link> here
+            Please click{" "}
+            <Link to="/signin" className="here">
+              HERE{" "}
+            </Link>
+            to Sign in
           </p>
         </section>
       ) : (
@@ -126,7 +128,14 @@ const Register = () => {
             {/* aria-live means when we set focus on errRef, it will be announced with a screen reader */}
             <form className="regform" onSubmit={handleSubmit}>
               <div className="newform">
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">
+                  Username:
+                  <FaCheck className={validName ? "valid" : "hide"} />
+                  <FaTimes
+                    className={validName || !user ? "hide" : "invalid"}
+                  />
+                  {/* show green tick if the name complies with the rules and show X if not or if the userstate doesn't exist */}
+                </label>
                 <input
                   type="text"
                   id="username"
@@ -209,6 +218,7 @@ const Register = () => {
                   <FaCheck
                     className={validMatch && matchPwd ? "valid" : "hide"}
                   />
+                  {/* valid match + matching pwd because with only matchPwd, it would show as green when both fields are empty */}
                   <FaTimes
                     className={validMatch || !matchPwd ? "hide" : "invalid"}
                   />
@@ -244,7 +254,7 @@ const Register = () => {
             <p className="link">
               Already registered?
               <br />
-              <Link to="/signup">Sign in</Link> here
+              <Link to="/signin">Sign in</Link> here
             </p>
           </div>
         </section>
@@ -255,16 +265,3 @@ const Register = () => {
 };
 
 export default Register;
-
-<div className="form">
-  <input type="email" name="email" placeholder="Enter Email Here" />
-  <input type="password" name="" placeholder="Enter Password Here" />
-  <Link to="/register" className="btnn">
-    LOGIN
-  </Link>
-  <p className="link">
-    Don't have an account?
-    <br />
-    <Link to="/signup">Sign up</Link> here
-  </p>
-</div>;

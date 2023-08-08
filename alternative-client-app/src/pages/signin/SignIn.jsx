@@ -1,10 +1,10 @@
 import React from "react";
-import "./SignUp.css";
+import "./signin.css";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Footer from "../../components/Footer";
 
-const SignUp = () => {
+const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const [email, setEmail] = useState("");
@@ -82,7 +82,7 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
