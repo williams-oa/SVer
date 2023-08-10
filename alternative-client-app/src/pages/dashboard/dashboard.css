@@ -1,0 +1,70 @@
+.middledash {
+    color: blue;
+    width: auto;
+    
+    margin-top: 5rem;
+    height: 100%;
+    background-color: white;
+    
+    margin-inline: auto;
+    align-items: center;
+    align-content: center;
+}
+
+.welcome {
+    margin-bottom: 2rem;
+}
+
+.welcome h2 {
+    color: black;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+}
+
+.card.dash__value {
+    
+    padding-top: 3.5rem;
+    text-align: left;
+    
+}
+
+.dash__wrapper {
+    display: grid;
+    margin: 0 1rem 0 1rem;
+    
+}
+
+.dash__right {
+    margin: 0 1rem 0 1rem;
+}
+
+.vendors_dash_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+}
+
+.dash_value {
+    background: var(--color-gray-500);
+    border: 1px solid transparent;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 15%;
+    transition: var(--transition);
+}
+
+.dash_value:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-gray-400);
+    cursor: default;
+    /* so when we hover, it doesn't look like we are about to select an item */
+}
+
+.wholedash {
+    display: flex;
+    flex-direction: rows;
+    justify-content: space-around;
+}

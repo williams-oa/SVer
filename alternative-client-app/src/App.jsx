@@ -9,8 +9,10 @@ import SignIn from "./pages/signin/SignIn";
 import NotFound from "./pages/notFound/NotFound";
 import Navbar from "./components/Navbar";
 import Users from "./pages/users/Users";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 const App = () => {
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="signin" element={<SignIn />} />
         <Route path="*" element={<NotFound />} />
         <Route path="users" element={<Users />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

@@ -39,6 +39,7 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
 
   const [email, setEmail] = useState();
+  const [usertype, setUsertype] = useState("");
 
   useEffect(() => {
     userRef.current.focus();
@@ -67,8 +68,7 @@ const Register = () => {
 
   // const history = useNavigate();
 
-
-//++++++++++++++++++++++++++++++SUBMITTING REQUEST & ERROR HANDLING+++++++++++++++++++++++++++++++++++++
+  //++++++++++++++++++++++++++++++SUBMITTING REQUEST & ERROR HANDLING+++++++++++++++++++++++++++++++++++++
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -76,6 +76,7 @@ const Register = () => {
       const response = await axios.post(
         REGISTER_URL,
         JSON.stringify({ username: user, email: email, password: pwd }),
+        //what the API expects is first
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -93,6 +94,8 @@ const Register = () => {
         const errorCode = err.response?.data?.error?.code;
         if (errorCode === 11000) {
           setErrMsg("Username or email Taken");
+        } else {
+          setErrMsg("Registration error");
         }
       }
       errRef.current.focus();
@@ -244,6 +247,20 @@ const Register = () => {
                   Must match the first password input field.
                 </p>
               </div>
+
+              <div className="form-usertype">
+                <label htmlFor="usertype"> User Type:</label>
+                <select
+                  value={usertype}
+                  id="usertype"
+                  onChange={(e) => setUsertype(e.target.value)}
+                >
+                  <option value="">Select User Type</option>
+                  <option value="individual">Individual</option>
+                  <option value="institution">Institution</option>
+                </select>
+              </div>
+
               <button
                 className="btnn"
                 disabled={!validName || !validPwd || !validMatch ? true : false}

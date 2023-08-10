@@ -35,3 +35,21 @@
     font-family: Arial;
   }
 
+  .signsuccess {
+    width: 50%;
+    display: grid;
+    margin-top: 7rem;
+    flex-direction: column;
+    margin-inline: auto;
+    /* This is the absolute key to centering your information */
+    gap: 0.5rem;
+    background-color: rgb(7, 7, 105);
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .here {
+    color: #ffb116;
+    font-size: large;
+  }
+

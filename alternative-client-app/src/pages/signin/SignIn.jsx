@@ -1,173 +1,129 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import "./signin.css";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import Footer from "../../components/Footer";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Dashboard from "../dashboard/Dashboard";
+
+axios.create({
+  baseURL: "http://localhost:5001",
+});
+const LOGIN_URL = "/api/v1.0.0/auth/login";
 
 const SignIn = () => {
+  const userRef = useRef(); //to set focus for accessability
+  const errRef = useRef();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const [email, setEmail] = useState("");
-  const [usertype, setUsertype] = useState("");
-  //const [error, setError] = useState('');
 
-  const history = useNavigate();
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  const handleRegister = async () => {
+  const [userData, setUserData] = useState(null);
+  //to transfer userdata to dashboard
+
+  // Setting focus
+  useEffect(() => {
+    userRef.current.focus();
+  }, []); //dependency array is empty so it will only happen when the component loads
+  //focus is on the input that we will reference with the userRef
+
+  //Clearing error message when username/password is edited
+  useEffect(() => {
+    setErrMsg("");
+  }, [username, password]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); //prevents reload
+
     try {
-      const response = await fetch("127.0.0.1:3000/api/v1/tours", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password, usertype }),
-      });
-      if (response.ok) {
-        // Registration successful, navigate to login page
-        history.push('/userDashboard');
-        // You can use react-router-dom for navigation
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ username, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      const userData = response?.data?.data?.user;
+      //using axios because it throws errors if anything is wrong unlike with fetch, also don't have to convert response to json
+      //we want to do these if the try is successful
+
+      //const accessToken = response?.data?.accessToken
+      //const roles =response?.data?.roles
+      setUsername("");
+      setPassword(""); //empties the username and password when submitted
+      setSuccess(true);
+      setUserData(userData);
+      console.log(userData)
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response"); //where there's no error response data
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing username or Password");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Unauthorised");
       } else {
-        // Handle registration error
-        //setError('Sorry, registration data is incorrect. Please check the required fields again.')
+        setErrMsg("Login Failed");
       }
-    } catch (error) {
-      console.error("Error registering user", error);
+      errRef.current.focus();
     }
   };
 
   return (
     <>
-      <form className="KYC" action="">
-        {" "}
-        <h2>Sign in:</h2>
-        <br />
-        <div className="form-item">
-          <label htmlFor="theinput"> User Name:</label>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
+      {success ? (
+        <Dashboard userData={userData} />
+        
+      ) : (
+        <section>
+          <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"}>
+            {errMsg}
+          </p>
+          <form className="KYC" action="">
+            <h2>Sign in:</h2>
+            <br />
+            <div className="form-item">
+              <label htmlFor="username"> User Name:</label>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                id="username" //id needs to match the htmlFor
+                ref={userRef} //to set focus on this input
+                autoComplete="off"
+                required
+              />
+            </div>
+            <div className="form-item">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                id="password"
+                required
+              />
+            </div>
 
-
-        <div className="form-item">
-          <label htmlFor="theinput">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-usertype">
-          <label htmlFor="theinput"> User Type:</label>
-          <select
-            value={usertype}
-            onChange={(e) => setUsertype(e.target.value)}
-          >
-            <option value="">Select User Type</option>
-            <option value="individual">Individual</option>
-            <option value="student">Student</option>
-            <option value="institution">Institution</option>
-          </select>
-        </div>
-        <button className="btn" onClick={handleRegister}>
-          Submit
-        </button>
-      </form>
+            <button className="btn" onClick={handleSubmit}>
+              Sign In
+            </button>
+          </form>
+          <p className="link">
+            Need an account?
+            <br />
+            <Link to="/register">Register</Link> here
+          </p>
+        </section>
+      )}
       <Footer />
     </>
   );
 };
 
 export default SignIn;
-
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// const SignUp = () => {
-//   const [name, setname] = useState("");
-//   const [duration, setduration] = useState("");
-//   const [difficulty, setdifficulty] = useState("");
-//   const [price, setprice] = useState("");
-//   const [error, setError] = useState('');
-
-//   const history = useNavigate();
-
-//   const handleRegister = async () => {
-//     try {
-//       const response = await fetch("127.0.0.1:3000/api/v1/tours", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ name, duration, difficulty, price }),
-//       });
-//       if (response.ok) {
-//         // Registration successful, navigate to login page
-//         history.push('/userDashboard');
-        
-//         // You can use react-router-dom for navigation
-//       } else {
-//         // Handle registration error
-//         setError('Sorry, registration data is incorrect. Please check the required fields again.')
-//       }
-//     } catch (error) {
-//       console.error("Error registering user", error);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <form className="KYC" action="">
-//         {" "}
-//         <h2>Please fill out your details below:</h2>
-//         <br />
-//         <div className="form-item">
-//           <label htmlFor="theinput"> User Name:</label>
-//           <input
-//             type="text"
-//             placeholder="Username"
-//             value={name}
-//             onChange={(e) => setname(e.target.value)}
-//           />
-//         </div>
-//         <div className="form-item">
-//           <label htmlFor="theinput"> duration:</label>
-//           <input
-//             type="number"
-//             placeholder="10"
-//             value={duration}
-//             onChange={(e) => setduration(e.target.value)}
-//           />
-//         </div>
-//         <div className="form-item">
-//           <label htmlFor="theinput">difficulty</label>
-//           <input
-//             type="text"
-//             placeholder="text"
-//             value={difficulty}
-//             onChange={(e) => setdifficulty(e.target.value)}
-//           />
-//         </div>
-//         <div className="form-item">
-//           <label htmlFor="theinput"> price:</label>
-//           <input
-//             type="number"
-//             placeholder="10"
-//             value={price}
-//             onChange={(e) => setprice(e.target.value)}
-//           />
-//         </div>
-//         <button className="btn" onClick={handleRegister}>
-//           Submit
-//         </button>
-//       </form>
-//       <Footer />
-//     </>
-//   );
-// };
-
-// export default SignUp;
