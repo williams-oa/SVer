@@ -7,7 +7,6 @@ import AboutPage from './AboutPage';
 import KYCPage from './KYCPage';
 import TransactionsPage from './TransactionPage';
 import UsersData from './users';
-import LoginPage from './LoginPage';
 
 function App() {
   return (
@@ -38,6 +37,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/kyc" element={<KYCPage />} />
           <Route path="/transaction" element={<TransactionsPage />} />
+          
         </Routes>
       </div>
     </Router>

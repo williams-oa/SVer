@@ -11,6 +11,6 @@ router
 
 router
   .route("/:id")
-  .get(tokenVerification.verifyTokenAndAdmin, productController.deleteCoin);
+  .delete(tokenVerification.verifyTokenAndAdmin, productController.deleteCoin);
 
 module.exports = router;
