@@ -1,0 +1,64 @@
+.sendmoneynow {
+    width: 50%;
+    display: grid;
+    flex-direction: column;
+    margin-inline: auto;
+    /* This is the absolute key to centering your information */
+    gap: 0.5rem;
+       
+}
+.form-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-item label {
+    min-width: 120px; 
+    /* margin-right: 10px; */
+  }
+  .form-usertype label {
+    min-width: 120px; 
+    margin-right: 2.5rem
+;
+  }
+  .form-item input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  ::placeholder{
+    color: #a4a4a4;
+    font-family: Arial;
+  }
+
+
+.sendmoney {
+    margin: 0 1rem 0 1rem;
+}
+
+.sendmoney_dash_wrapper {
+    width: 50%;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+}
+
+.sendmoney_value {
+    background: var(--color-gray-500);
+    border: 1px solid transparent;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 15%;
+    transition: var(--transition);
+    margin-top: 7rem;
+}
+.sendmoney_value:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-gray-400);
+  cursor: default;
+  /* so when we hover, it doesn't look like we are about to select an item */
+}

@@ -1,11 +1,29 @@
+<<<<<<< HEAD
 .KYC {
     width: 50%;
+=======
+
+
+.signinpage {
+  background-color: var(--color-primary);
+  width: 50%;
+  margin-inline: auto;
+
+}
+
+.KYC {
+    width: 70%;
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
     display: grid;
     margin-top: 7rem;
     flex-direction: column;
     margin-inline: auto;
     /* This is the absolute key to centering your information */
     gap: 0.5rem;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
        
 }
 .form-item {
@@ -52,4 +70,7 @@
     color: #ffb116;
     font-size: large;
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b

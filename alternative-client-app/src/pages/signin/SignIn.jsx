@@ -3,7 +3,11 @@ import "./signin.css";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
+<<<<<<< HEAD
 import Dashboard from "../dashboard/Dashboard";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 
 axios.create({
   baseURL: "http://localhost:5001",
@@ -16,6 +20,7 @@ const SignIn = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+<<<<<<< HEAD
   // const [email, setEmail] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
@@ -23,6 +28,11 @@ const SignIn = () => {
 
   const [userData, setUserData] = useState(null);
   //to transfer userdata to dashboard
+=======
+  const [errMsg, setErrMsg] = useState("");
+
+  const navigate = useNavigate();
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 
   // Setting focus
   useEffect(() => {
@@ -36,7 +46,11 @@ const SignIn = () => {
   }, [username, password]);
 
   const handleSubmit = async (e) => {
+<<<<<<< HEAD
     e.preventDefault(); //prevents reload
+=======
+    e.preventDefault();
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 
     try {
       const response = await axios.post(
@@ -47,6 +61,7 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
+<<<<<<< HEAD
       const userData = response?.data?.data?.user;
       //using axios because it throws errors if anything is wrong unlike with fetch, also don't have to convert response to json
       //we want to do these if the try is successful
@@ -58,6 +73,15 @@ const SignIn = () => {
       setSuccess(true);
       setUserData(userData);
       console.log(userData)
+=======
+      const token = response?.data?.data?.accessToken;
+      localStorage.setItem("jwtToken", token);
+
+      setUsername("");
+      setPassword(""); //empties the username and password when submitted
+
+      navigate("/dashboard", { state: { jwtToken: token } });
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response"); //where there's no error response data
@@ -74,6 +98,7 @@ const SignIn = () => {
 
   return (
     <>
+<<<<<<< HEAD
       {success ? (
         <Dashboard userData={userData} />
         
@@ -121,6 +146,51 @@ const SignIn = () => {
           </p>
         </section>
       )}
+=======
+      <section className="signinpage">
+        <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"}>
+          {errMsg}
+        </p>
+        <form className="KYC" action="">
+          <h2>Sign in:</h2>
+          <br />
+          <div className="form-item">
+            <label htmlFor="username"> User Name:</label>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              id="username" //id needs to match the htmlFor
+              ref={userRef} //to set focus on this input
+              autoComplete="off"
+              required
+            />
+          </div>
+          <div className="form-item">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              id="password"
+              required
+            />
+          </div>
+
+          <button className="btn" onClick={handleSubmit}>
+            Sign In
+          </button>
+        </form>
+        <p className="link">
+          Need an account?
+          <br />
+          <Link to="/register">Register</Link> here
+        </p>
+      </section>
+
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       <Footer />
     </>
   );

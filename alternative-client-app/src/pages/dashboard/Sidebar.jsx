@@ -8,11 +8,23 @@ import { AiOutlineRise } from "react-icons/ai";
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 
 
+<<<<<<< HEAD
 function Sidebar() {
     const{currentLink, setCurrentLink} = useState(1);
   return (
     <Section>
         <div className='top'>
+=======
+
+function Sidebar() {
+    const{currentLink, setCurrentLink} = useState(1);
+
+
+  return (
+    <Section>
+        <div className='top'>
+        
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
             <div className='brand'>
                 <BiStopCircle className='color1'/>
                 <BiStopCircle className='color2'/>
@@ -22,46 +34,75 @@ function Sidebar() {
                 <ul>
                     <li className={currentLink ===1 ? "active" : "none"}
                     onClick = {() => setCurrentLink(1) }
+<<<<<<< HEAD
                     >
                         <a href= '#'>
+=======
+                    >   
+                        <a href= '/dashboard'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                             <BiHomeAlt />
                         </a>
                     </li>
                     <li className={currentLink ===2 ? "active" : "none"}
                     onClick = {() => setCurrentLink(2) }
                     >
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'analytics'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                             <AiOutlineFundProjectionScreen />
                         </a>
                     </li>
                     <li className={currentLink ===3 ? "active" : "none"}
                     onClick = {() => setCurrentLink(3) }
                     >
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'prices'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                             <TiChartBarOutline />
                         </a>
                     </li>
                     <li className={currentLink ===4 ? "active" : "none"}
                     onClick = {() => setCurrentLink(4) }
                     >
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'settings'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                             <AiTwotoneSetting />
                         </a>
                     </li>
                     <li className={currentLink ===5 ? "active" : "none"}
                     onClick = {() => setCurrentLink(5) }
                     >
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'topstocks'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                             <AiOutlineRise />
                         </a>
                     </li>
                     <li className={currentLink ===6 ? "active" : "none"}
                     onClick = {() => setCurrentLink(6) }
                     >
+<<<<<<< HEAD
                         <a href= '#'>
                             <AiOutlineFall />
                         </a>
                     </li>
+=======
+                        <a href= 'badstocks'>
+                            <AiOutlineFall />
+                        </a>
+                    </li>
+                    
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                 </ul>
             </div>
         </div>

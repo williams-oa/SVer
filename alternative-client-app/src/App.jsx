@@ -10,6 +10,11 @@ import NotFound from "./pages/notFound/NotFound";
 import Navbar from "./components/Navbar";
 import Users from "./pages/users/Users";
 import Dashboard from "./pages/dashboard/Dashboard";
+<<<<<<< HEAD
+=======
+import Sendmoney from "./pages/sendmoney/Sendmoney";
+import Addmoney from "./pages/addmoney/Addmoney";
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 
 const App = () => {
 
@@ -26,6 +31,11 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="users" element={<Users />} />
         <Route path="dashboard" element={<Dashboard />} />
+<<<<<<< HEAD
+=======
+        <Route path="sendmoney" element={<Sendmoney />} />
+        <Route path="addmoney" element={<Addmoney />} />
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       </Routes>
     </BrowserRouter>
   );

@@ -10,6 +10,10 @@
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "buffer": "^6.0.3",
+<<<<<<< HEAD
+=======
+    "jwt-decode": "^3.1.2",
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",

@@ -39,7 +39,11 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
 
   const [email, setEmail] = useState();
+<<<<<<< HEAD
   const [usertype, setUsertype] = useState("");
+=======
+  const [walletAddress, setWalletAddress] = useState("");
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 
   useEffect(() => {
     userRef.current.focus();
@@ -75,7 +79,11 @@ const Register = () => {
     try {
       const response = await axios.post(
         REGISTER_URL,
+<<<<<<< HEAD
         JSON.stringify({ username: user, email: email, password: pwd }),
+=======
+        JSON.stringify({ username: user, email: email, password: pwd, walletaddress: walletAddress }),
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
         //what the API expects is first
         {
           headers: { "Content-Type": "application/json" },
@@ -169,7 +177,11 @@ const Register = () => {
               </div>
 
               <div className="newform">
+<<<<<<< HEAD
                 <label htmlFor="username">Email:</label>
+=======
+                <label htmlFor="email">Email:</label>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                 <input
                   type="text"
                   id="email"
@@ -248,6 +260,7 @@ const Register = () => {
                 </p>
               </div>
 
+<<<<<<< HEAD
               <div className="form-usertype">
                 <label htmlFor="usertype"> User Type:</label>
                 <select
@@ -259,6 +272,15 @@ const Register = () => {
                   <option value="individual">Individual</option>
                   <option value="institution">Institution</option>
                 </select>
+=======
+              <div className="newform">
+                <label htmlFor="address">Wallet Address:</label>
+                <input
+                  type="text"
+                  id="address"
+                  onChange={(e) => setWalletAddress(e.target.value)}
+                />
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
               </div>
 
               <button
