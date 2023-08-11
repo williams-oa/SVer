@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Dashboard from "../dashboard/Dashboard";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 import { useNavigate } from "react-router-dom";
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -26,6 +30,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // const [email, setEmail] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
@@ -33,6 +38,11 @@ const SignIn = () => {
 
   const [userData, setUserData] = useState(null);
   //to transfer userdata to dashboard
+=======
+  const [errMsg, setErrMsg] = useState("");
+
+  const navigate = useNavigate();
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
   const [errMsg, setErrMsg] = useState("");
 
@@ -58,7 +68,11 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     e.preventDefault(); //prevents reload
+=======
+    e.preventDefault();
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
     e.preventDefault();
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -77,6 +91,7 @@ const SignIn = () => {
       );
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       const userData = response?.data?.data?.user;
       //using axios because it throws errors if anything is wrong unlike with fetch, also don't have to convert response to json
       //we want to do these if the try is successful
@@ -91,6 +106,8 @@ const SignIn = () => {
 =======
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       const token = response?.data?.data?.accessToken;
       localStorage.setItem("jwtToken", token);
 
@@ -99,6 +116,9 @@ const SignIn = () => {
 
       navigate("/dashboard", { state: { jwtToken: token } });
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -118,6 +138,7 @@ const SignIn = () => {
 
   return (
     <>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       {success ? (
@@ -170,6 +191,8 @@ const SignIn = () => {
 =======
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       <section className="signinpage">
         <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"}>
           {errMsg}
@@ -214,6 +237,9 @@ const SignIn = () => {
       </section>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b

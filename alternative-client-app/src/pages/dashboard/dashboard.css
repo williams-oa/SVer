@@ -15,6 +15,12 @@
     margin-bottom: 2rem;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
     display: flex;
     flex-direction: row;
@@ -81,8 +87,11 @@
     justify-content: space-around;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 }
@@ -120,6 +129,10 @@
     background: hsl(0, 100%, 40%, 0.2);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+  
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
   
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======

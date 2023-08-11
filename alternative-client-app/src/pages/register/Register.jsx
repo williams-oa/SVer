@@ -41,7 +41,11 @@ const Register = () => {
   const [email, setEmail] = useState();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [usertype, setUsertype] = useState("");
+=======
+  const [walletAddress, setWalletAddress] = useState("");
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
   const [walletAddress, setWalletAddress] = useState("");
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -85,7 +89,11 @@ const Register = () => {
         REGISTER_URL,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         JSON.stringify({ username: user, email: email, password: pwd }),
+=======
+        JSON.stringify({ username: user, email: email, password: pwd, walletaddress: walletAddress }),
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
         JSON.stringify({ username: user, email: email, password: pwd, walletaddress: walletAddress }),
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -187,7 +195,11 @@ const Register = () => {
               <div className="newform">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <label htmlFor="username">Email:</label>
+=======
+                <label htmlFor="email">Email:</label>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
                 <label htmlFor="email">Email:</label>
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -274,6 +286,7 @@ const Register = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <div className="form-usertype">
                 <label htmlFor="usertype"> User Type:</label>
                 <select
@@ -288,6 +301,8 @@ const Register = () => {
 =======
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
               <div className="newform">
                 <label htmlFor="address">Wallet Address:</label>
                 <input
@@ -296,6 +311,9 @@ const Register = () => {
                   onChange={(e) => setWalletAddress(e.target.value)}
                 />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b

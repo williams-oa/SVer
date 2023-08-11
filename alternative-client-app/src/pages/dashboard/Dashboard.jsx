@@ -6,6 +6,7 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import { vendors } from "../../data";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const Dashboard = ({ userData }) => {
   if (!userData) {
@@ -14,6 +15,8 @@ const Dashboard = ({ userData }) => {
   }
 
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 import { Link } from "react-router-dom";
@@ -38,6 +41,9 @@ const Dashboard = () => {
     navigate("/signin");
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -50,8 +56,11 @@ const Dashboard = () => {
         <div className="welcome">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <h2>Welcome to the Dashboard, {userData.username}!</h2>
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
           <h2>Welcome to the Dashboard, {username}!</h2>
@@ -59,6 +68,9 @@ const Dashboard = () => {
             Sign out
           </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -69,12 +81,15 @@ const Dashboard = () => {
             <div className="dash__wrapper">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <Card className="dash__value" key={userData._id}>
                 <span>{<BiSolidUserCircle />}</span>
                 <h3>Username: {userData.username}</h3>
                 <h4>Email: {userData.email}</h4>
                 <small>User ID: {userData._id}</small>
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
               <Card className="dash__value" key={id}>
@@ -84,6 +99,9 @@ const Dashboard = () => {
                 <small>User ID: {id}</small>
                 {/* <small>wallet address: {userData.walletaddress}</small> */}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -104,9 +122,12 @@ const Dashboard = () => {
               <br />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             </div>
             <button className="btn">Send Money</button>
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
               <div className="balance">Your account balance:</div>
@@ -120,6 +141,9 @@ const Dashboard = () => {
               ADD MONEY
             </Link>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
