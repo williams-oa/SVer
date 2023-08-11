@@ -18,6 +18,8 @@ exports.registerUser = async (req, res) => {
     const accessToken = jwt.sign(
       {
         id: newUser._id,
+        email: newUser.email,
+        password: newUser.password,
         isAdmin: newUser.isAdmin,
       },
       process.env.JWT_SECRET,
@@ -66,6 +68,8 @@ exports.loginUser = async (req, res) => {
     const accessToken = jwt.sign(
       {
         id: user._id,
+        email: newUser.email,
+        password: newUser.password,
         isAdmin: user.isAdmin,
       },
       process.env.JWT_SECRET,

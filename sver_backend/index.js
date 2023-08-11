@@ -5,6 +5,7 @@ const userRouter = require("./routers/userRouter");
 const authRouter = require("./routers/auth");
 const productRouter = require("./routers/productRoutes");
 const cartRouter = require("./routers/cartRoutes");
+const vendorRouter = require("./routers/vendorRouter");
 const { json } = require("body-parser");
 const cron = require("node-cron");
 const updateTokenPrices = require("./updateTokenPrices");
@@ -34,6 +35,7 @@ app.use("/api/v1.0.0/user", userRouter);
 app.use("/api/v1.0.0/auth", authRouter);
 app.use("/api/v1.0.0/product", productRouter);
 app.use("/api/v1.0.0/cart", cartRouter);
+app.use("/api/v1.0.0/vendor", vendorRouter);
 
 // Define the cron job for updating coin prices
 cron.schedule("0 * * * *", () => {
