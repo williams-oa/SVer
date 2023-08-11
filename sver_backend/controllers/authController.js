@@ -8,6 +8,7 @@ exports.registerUser = async (req, res) => {
   const newUser = new UserModel({
     username: req.body.username,
     email: req.body.email,
+    address: req.body.address,
     password: crypto.AES.encrypt(
       req.body.password,
       process.env.PASSWORD_SECRET
@@ -18,7 +19,9 @@ exports.registerUser = async (req, res) => {
     const accessToken = jwt.sign(
       {
         id: newUser._id,
+        username: newUser.username,
         email: newUser.email,
+        address: newUser.address,
         password: newUser.password,
         isAdmin: newUser.isAdmin,
       },
@@ -68,8 +71,10 @@ exports.loginUser = async (req, res) => {
     const accessToken = jwt.sign(
       {
         id: user._id,
-        email: newUser.email,
-        password: newUser.password,
+        username: user.username,
+        email: user.email,
+        address: user.address,
+        password: user.password,
         isAdmin: user.isAdmin,
       },
       process.env.JWT_SECRET,

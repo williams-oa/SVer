@@ -27,17 +27,23 @@
     flex-direction: row;
 }
 
-.card.dash__value {
-    
-    padding-top: 3.5rem;
-    text-align: left;
-    
+.user__content:hover {
+    background: var(--color-gray-500);
+    border-color: var(--color-gray-400);
+    cursor: default;
+    /* so when we hover, it doesn't look like we are about to select an item */
+}
+
+.wadd { 
+    max-width: 300px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .dash__wrapper {
     display: grid;
     margin: 0 1rem 0 1rem;
-    
 }
 
 .dash__right {

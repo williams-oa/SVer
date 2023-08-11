@@ -17,9 +17,9 @@ const Dashboard = () => {
   const username = decodedToken.username;
   const email = decodedToken.email;
   const id = decodedToken.id;
+  const address = decodedToken.address;
 
   const navigate = useNavigate();
-
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
@@ -41,12 +41,13 @@ const Dashboard = () => {
         <div className="wholedash">
           <div className="dash__left">
             <div className="dash__wrapper">
-              <Card className="dash__value" key={id}>
+              <Card className="user__content" key={id}>
                 <span>{<BiSolidUserCircle />}</span>
                 <h3>Username: {username}</h3>
+                <br />
                 <h5>Email: {email}</h5>
                 <small>User ID: {id}</small>
-                {/* <small>wallet address: {userData.walletaddress}</small> */}
+                <small className="wadd">Wallet address: {address}</small>
               </Card>
             </div>
           </div>
