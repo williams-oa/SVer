@@ -39,7 +39,7 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
 
   const [email, setEmail] = useState();
-  const [usertype, setUsertype] = useState("");
+  const [walletAddress, setWalletAddress] = useState("");
 
   useEffect(() => {
     userRef.current.focus();
@@ -75,7 +75,7 @@ const Register = () => {
     try {
       const response = await axios.post(
         REGISTER_URL,
-        JSON.stringify({ username: user, email: email, password: pwd }),
+        JSON.stringify({ username: user, email: email, password: pwd, walletaddress: walletAddress }),
         //what the API expects is first
         {
           headers: { "Content-Type": "application/json" },
@@ -169,7 +169,7 @@ const Register = () => {
               </div>
 
               <div className="newform">
-                <label htmlFor="username">Email:</label>
+                <label htmlFor="email">Email:</label>
                 <input
                   type="text"
                   id="email"
@@ -248,17 +248,13 @@ const Register = () => {
                 </p>
               </div>
 
-              <div className="form-usertype">
-                <label htmlFor="usertype"> User Type:</label>
-                <select
-                  value={usertype}
-                  id="usertype"
-                  onChange={(e) => setUsertype(e.target.value)}
-                >
-                  <option value="">Select User Type</option>
-                  <option value="individual">Individual</option>
-                  <option value="institution">Institution</option>
-                </select>
+              <div className="newform">
+                <label htmlFor="address">Wallet Address:</label>
+                <input
+                  type="text"
+                  id="address"
+                  onChange={(e) => setWalletAddress(e.target.value)}
+                />
               </div>
 
               <button

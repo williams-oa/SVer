@@ -68,3 +68,7 @@
     flex-direction: rows;
     justify-content: space-around;
 }
+.balance {
+    height: 70px;
+    
+}

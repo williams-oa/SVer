@@ -4,11 +4,15 @@ import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Dashboard from "../dashboard/Dashboard";
+import { useNavigate } from "react-router-dom";
+
 
 axios.create({
   baseURL: "http://localhost:5001",
 });
 const LOGIN_URL = "/api/v1.0.0/auth/login";
+
+
 
 const SignIn = () => {
   const userRef = useRef(); //to set focus for accessability
@@ -19,10 +23,11 @@ const SignIn = () => {
   // const [email, setEmail] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
+
 
   const [userData, setUserData] = useState(null);
   //to transfer userdata to dashboard
+const navigate = useNavigate();
 
   // Setting focus
   useEffect(() => {
@@ -36,7 +41,7 @@ const SignIn = () => {
   }, [username, password]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); //prevents reload
+    e.preventDefault(); 
 
     try {
       const response = await axios.post(
@@ -48,6 +53,10 @@ const SignIn = () => {
         }
       );
       const userData = response?.data?.data?.user;
+      const token = response?.data?.data?.accessToken;
+      console.log(response)
+      console.log(token)
+      localStorage.setItem('jwtToken', token);
       //using axios because it throws errors if anything is wrong unlike with fetch, also don't have to convert response to json
       //we want to do these if the try is successful
 
@@ -55,9 +64,10 @@ const SignIn = () => {
       //const roles =response?.data?.roles
       setUsername("");
       setPassword(""); //empties the username and password when submitted
-      setSuccess(true);
+    
       setUserData(userData);
-      console.log(userData)
+      navigate('/dashboard', { state: { jwtToken: token } }) ;
+
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response"); //where there's no error response data
@@ -74,11 +84,11 @@ const SignIn = () => {
 
   return (
     <>
-      {success ? (
+      {/* {isLoggedIn ? (
         <Dashboard userData={userData} />
-        
-      ) : (
-        <section>
+
+      ) : ( */}
+        <section className="signinpage">
           <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"}>
             {errMsg}
           </p>
@@ -120,7 +130,7 @@ const SignIn = () => {
             <Link to="/register">Register</Link> here
           </p>
         </section>
-      )}
+      {/* )} */}
       <Footer />
     </>
   );

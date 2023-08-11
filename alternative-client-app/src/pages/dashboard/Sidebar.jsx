@@ -13,6 +13,7 @@ function Sidebar() {
   return (
     <Section>
         <div className='top'>
+        <button className="signout">Sign out</button>
             <div className='brand'>
                 <BiStopCircle className='color1'/>
                 <BiStopCircle className='color2'/>
@@ -23,45 +24,46 @@ function Sidebar() {
                     <li className={currentLink ===1 ? "active" : "none"}
                     onClick = {() => setCurrentLink(1) }
                     >
-                        <a href= '#'>
+                        <a href= 'dashboard'>
                             <BiHomeAlt />
                         </a>
                     </li>
                     <li className={currentLink ===2 ? "active" : "none"}
                     onClick = {() => setCurrentLink(2) }
                     >
-                        <a href= '#'>
+                        <a href= 'analytics'>
                             <AiOutlineFundProjectionScreen />
                         </a>
                     </li>
                     <li className={currentLink ===3 ? "active" : "none"}
                     onClick = {() => setCurrentLink(3) }
                     >
-                        <a href= '#'>
+                        <a href= 'prices'>
                             <TiChartBarOutline />
                         </a>
                     </li>
                     <li className={currentLink ===4 ? "active" : "none"}
                     onClick = {() => setCurrentLink(4) }
                     >
-                        <a href= '#'>
+                        <a href= 'settings'>
                             <AiTwotoneSetting />
                         </a>
                     </li>
                     <li className={currentLink ===5 ? "active" : "none"}
                     onClick = {() => setCurrentLink(5) }
                     >
-                        <a href= '#'>
+                        <a href= 'topstocks'>
                             <AiOutlineRise />
                         </a>
                     </li>
                     <li className={currentLink ===6 ? "active" : "none"}
                     onClick = {() => setCurrentLink(6) }
                     >
-                        <a href= '#'>
+                        <a href= 'badstocks'>
                             <AiOutlineFall />
                         </a>
                     </li>
+                    
                 </ul>
             </div>
         </div>

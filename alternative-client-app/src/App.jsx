@@ -10,6 +10,7 @@ import NotFound from "./pages/notFound/NotFound";
 import Navbar from "./components/Navbar";
 import Users from "./pages/users/Users";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Sendmoney from "./pages/sendmoney/Sendmoney";
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="users" element={<Users />} />
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="sendmoney" element={<Sendmoney />} />
       </Routes>
     </BrowserRouter>
   );
