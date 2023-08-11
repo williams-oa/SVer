@@ -2,7 +2,7 @@ import { SiBitcoinsv } from "react-icons/si";
 import { SiNike } from "react-icons/si";
 import { SiMcdonalds } from "react-icons/si";
 import { SiApple } from "react-icons/si";
-import {AiFillHome} from 'react-icons/ai'
+import { AiFillHome } from "react-icons/ai";
 
 export const links = [
   {
@@ -33,29 +33,16 @@ export const offers = [
     icon: <SiBitcoinsv />,
     title: "Fund Allocation",
     info: "Send BSV to a recipient and restrict spendability. A whole new ballgame to checks and balances for financial responsibility.",
-    path: "/offers/111",
+    path: "/about",
   },
   {
     id: 2,
     icon: <SiBitcoinsv />,
     title: "Personal Financing",
     info: "Upgrade your personal financial planning by restricting your spending based on your choice",
-    path: "/offers/222",
+    path: "/about",
   },
-  // {
-  //     id: 3,
-  //     icon: <SiOpenaigym/>,
-  //     title: "Program Three",
-  //     info: "This is the day that the lord has made. We will rejoice!",
-  //     path: "/programs/333"
-  // },
-  // {
-  //     id: 4,
-  //     icon: <SiOpenaigym/>,
-  //     title: "Program Four",
-  //     info: "This is the day that the lord has made. We will rejoice!",
-  //     path: "/programs/444"
-  // }
+
 ];
 
 export const vendors = [
@@ -64,25 +51,33 @@ export const vendors = [
     icon: <SiNike />,
     title: "Nike",
     desc: "Maximize performance and style with Nike's innovative products.",
+    category: "Clothing",
+    address: "16Lp7fuguGmXj4QHDrpwqxNydSDFh9DdVi",
   },
   {
     id: 2,
     icon: <SiMcdonalds />,
     title: "McDonalds",
     desc: "Savor joy with McDonald's iconic flavors and moments.",
+    category: "Food",
+    address: "1ERTuTnputLbCpFjJanMqTmPHEC5XnNwE8",
   },
   {
-      id: 3,
-      icon: <SiApple/>,
-      title: "Apple",
-      desc: "Innovate life with Apple's cutting-edge technology and design."
+    id: 3,
+    icon: <SiApple />,
+    title: "Apple",
+    desc: "Innovate life with Apple's cutting-edge technology and design.",
+    category: "Gadgets",
+    address: "1HuyZ9t3w2S2ExLdERS23RTjdy8hYY6nJv",
   },
   {
-      id: 4,
-      icon: <AiFillHome/>,
-      title: "Homes for Rent",
-      desc: "Find comfort in diverse rental properties with us."
-  }
+    id: 4,
+    icon: <AiFillHome />,
+    title: "Homes for Rent",
+    desc: "Find comfort in diverse rental properties with us.",
+    category: "Rent",
+    address: "1BkWEnTjnjG8UBpmCvh28m7BnzgPqXgF3r",
+  },
 ];
 
 export const faqs = [

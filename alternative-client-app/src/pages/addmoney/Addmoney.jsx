@@ -1,18 +1,20 @@
+import './addmoney.css'
+import Sidebar from '../dashboard/Sidebar';
+import Rightsidebar from '../dashboard/Rightsidebar';
+
 function Addmoney() {
   return (
     <div>
-      <form className="sendmoneynow">
-        <div className="form-item">
-          <label htmlFor="address">Address</label>
-          <input type="text" />
-        </div>
-
+      <Sidebar />
+      <Rightsidebar/>
+      <form className="addmoneynow">
         <div className="form-item">
           <label htmlFor="amount">Amount</label>
           <input type="number" />
         </div>
         <button className="btn">Add</button>
       </form>
+      
     </div>
   );
 }

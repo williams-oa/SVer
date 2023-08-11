@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Users from "./pages/users/Users";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Sendmoney from "./pages/sendmoney/Sendmoney";
+import Addmoney from "./pages/addmoney/Addmoney";
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="users" element={<Users />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="sendmoney" element={<Sendmoney />} />
+        <Route path="addmoney" element={<Addmoney />} />
       </Routes>
     </BrowserRouter>
   );

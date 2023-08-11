@@ -13,6 +13,9 @@
 
 .welcome {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .welcome h2 {
@@ -72,3 +75,33 @@
     height: 70px;
     
 }
+
+/* +++++++++++++++++++++++++++++++++++++++++++BUTTON TO SIGN OUT+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.btn-danger {
+    background: hsl(200, 100%, 50%, 0.1);
+    border: 1px solid hsl(200, 100%, 50%);
+    color: hsl(200, 100%, 50%);
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .btn-danger:hover,
+  .btn-danger:focus-visible {
+    background: hsl(200, 100%, 50%, 0.2);
+  }
+  
+
+.btn-danger {
+    background: hsl(0, 100%, 40%, 0.1);
+    border: 1px solid hsl(0, 100%, 40%);
+    color: hsl(0, 100%, 40%);
+  }
+  
+  .btn-danger:hover,
+  .btn-danger:focus-visible {
+    background: hsl(0, 100%, 40%, 0.2);
+  }
+  

@@ -1,0 +1,37 @@
+.addmoneynow {
+    width: 50%;
+    display: grid;
+    flex-direction: column;
+    margin-inline: auto;
+    margin-top: 6rem;
+    /* This is the absolute key to centering your information */
+    gap: 0.5rem;
+       
+}
+.form-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+  }
+
+  .form-item label {
+    min-width: 120px; 
+    /* margin-right: 10px; */
+  }
+  .form-usertype label {
+    min-width: 120px; 
+    margin-right: 2.5rem
+;
+  }
+  .form-item input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  ::placeholder{
+    color: #a4a4a4;
+    font-family: Arial;
+  }

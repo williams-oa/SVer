@@ -22,7 +22,7 @@ const Vendors = () => {
             <div className="vendors__wrapper">
               {vendors.map(({ id, icon, title, desc }) => {
                 return (
-                  <Card className="vendors__value" key={id}>
+                  <Card  className="vendors__value" key={id}>
                     <span>{icon}</span>
                     <h4>{title}</h4>
                     <small>{desc}</small>

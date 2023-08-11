@@ -8,12 +8,15 @@ import { AiOutlineRise } from "react-icons/ai";
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 
 
+
 function Sidebar() {
     const{currentLink, setCurrentLink} = useState(1);
+
+
   return (
     <Section>
         <div className='top'>
-        <button className="signout">Sign out</button>
+        
             <div className='brand'>
                 <BiStopCircle className='color1'/>
                 <BiStopCircle className='color2'/>
@@ -23,8 +26,8 @@ function Sidebar() {
                 <ul>
                     <li className={currentLink ===1 ? "active" : "none"}
                     onClick = {() => setCurrentLink(1) }
-                    >
-                        <a href= 'dashboard'>
+                    >   
+                        <a href= '/dashboard'>
                             <BiHomeAlt />
                         </a>
                     </li>

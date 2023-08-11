@@ -5,19 +5,26 @@ import Card from "../../UI/Card";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { vendors } from "../../data";
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
-import SignIn from "../signin/SignIn";
+import { useLocation } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-
   const location = useLocation();
   const jwtToken = location.state?.jwtToken;
   const decodedToken = jwtDecode(jwtToken);
-  console.log(decodedToken)
+
   const username = decodedToken.username;
   const email = decodedToken.email;
-  const id = decodedToken.id
+  const id = decodedToken.id;
+
+  const navigate = useNavigate();
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwtToken");
+    navigate("/signin");
+  };
   // If userData is not null, render the dashboard with user details
   return (
     <>
@@ -26,6 +33,9 @@ const Dashboard = () => {
       <div className="middledash">
         <div className="welcome">
           <h2>Welcome to the Dashboard, {username}!</h2>
+          <button className="btn-danger" onClick={handleLogout}>
+            Sign out
+          </button>
         </div>
 
         <div className="wholedash">
@@ -52,16 +62,14 @@ const Dashboard = () => {
                 );
               })}
               <br />
-              <div className="balance">
-                Your account balance:
-              </div>
+              <div className="balance">Your account balance:</div>
               <br />
             </div>
             <Link to="/sendmoney" className="btn lg">
               SEND MONEY
             </Link>
 
-            <Link to="/sendmoney" className="btn lg">
+            <Link to="/addmoney" className="btn lg">
               ADD MONEY
             </Link>
           </div>
