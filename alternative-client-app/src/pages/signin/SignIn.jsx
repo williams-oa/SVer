@@ -4,7 +4,11 @@ import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Dashboard from "../dashboard/Dashboard";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 import { useNavigate } from "react-router-dom";
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -21,6 +25,7 @@ const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 <<<<<<< HEAD
+<<<<<<< HEAD
   // const [email, setEmail] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
@@ -28,6 +33,11 @@ const SignIn = () => {
 
   const [userData, setUserData] = useState(null);
   //to transfer userdata to dashboard
+=======
+  const [errMsg, setErrMsg] = useState("");
+
+  const navigate = useNavigate();
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
   const [errMsg, setErrMsg] = useState("");
 
@@ -47,7 +57,11 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     e.preventDefault(); //prevents reload
+=======
+    e.preventDefault();
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
     e.preventDefault();
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -62,6 +76,7 @@ const SignIn = () => {
         }
       );
 <<<<<<< HEAD
+<<<<<<< HEAD
       const userData = response?.data?.data?.user;
       //using axios because it throws errors if anything is wrong unlike with fetch, also don't have to convert response to json
       //we want to do these if the try is successful
@@ -74,6 +89,8 @@ const SignIn = () => {
       setUserData(userData);
       console.log(userData)
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       const token = response?.data?.data?.accessToken;
       localStorage.setItem("jwtToken", token);
 
@@ -81,6 +98,9 @@ const SignIn = () => {
       setPassword(""); //empties the username and password when submitted
 
       navigate("/dashboard", { state: { jwtToken: token } });
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
     } catch (err) {
       if (!err?.response) {
@@ -98,6 +118,7 @@ const SignIn = () => {
 
   return (
     <>
+<<<<<<< HEAD
 <<<<<<< HEAD
       {success ? (
         <Dashboard userData={userData} />
@@ -147,6 +168,8 @@ const SignIn = () => {
         </section>
       )}
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       <section className="signinpage">
         <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"}>
           {errMsg}
@@ -190,6 +213,9 @@ const SignIn = () => {
         </p>
       </section>
 
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
       <Footer />
     </>

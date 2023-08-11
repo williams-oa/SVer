@@ -9,12 +9,15 @@ import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Sidebar() {
     const{currentLink, setCurrentLink} = useState(1);
   return (
     <Section>
         <div className='top'>
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 
 function Sidebar() {
     const{currentLink, setCurrentLink} = useState(1);
@@ -24,6 +27,9 @@ function Sidebar() {
     <Section>
         <div className='top'>
         
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
             <div className='brand'>
                 <BiStopCircle className='color1'/>
@@ -35,8 +41,13 @@ function Sidebar() {
                     <li className={currentLink ===1 ? "active" : "none"}
                     onClick = {() => setCurrentLink(1) }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     >
                         <a href= '#'>
+=======
+                    >   
+                        <a href= '/dashboard'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
                     >   
                         <a href= '/dashboard'>
@@ -48,7 +59,11 @@ function Sidebar() {
                     onClick = {() => setCurrentLink(2) }
                     >
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'analytics'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
                         <a href= 'analytics'>
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -59,7 +74,11 @@ function Sidebar() {
                     onClick = {() => setCurrentLink(3) }
                     >
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'prices'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
                         <a href= 'prices'>
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -70,7 +89,11 @@ function Sidebar() {
                     onClick = {() => setCurrentLink(4) }
                     >
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'settings'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
                         <a href= 'settings'>
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -81,7 +104,11 @@ function Sidebar() {
                     onClick = {() => setCurrentLink(5) }
                     >
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <a href= '#'>
+=======
+                        <a href= 'topstocks'>
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
                         <a href= 'topstocks'>
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
@@ -92,16 +119,22 @@ function Sidebar() {
                     onClick = {() => setCurrentLink(6) }
                     >
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <a href= '#'>
                             <AiOutlineFall />
                         </a>
                     </li>
 =======
+=======
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                         <a href= 'badstocks'>
                             <AiOutlineFall />
                         </a>
                     </li>
                     
+<<<<<<< HEAD
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
+=======
 >>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
                 </ul>
             </div>

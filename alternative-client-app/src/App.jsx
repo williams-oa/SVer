@@ -11,6 +11,11 @@ import Navbar from "./components/Navbar";
 import Users from "./pages/users/Users";
 import Dashboard from "./pages/dashboard/Dashboard";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import Sendmoney from "./pages/sendmoney/Sendmoney";
+import Addmoney from "./pages/addmoney/Addmoney";
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
 import Sendmoney from "./pages/sendmoney/Sendmoney";
 import Addmoney from "./pages/addmoney/Addmoney";
@@ -32,6 +37,11 @@ const App = () => {
         <Route path="users" element={<Users />} />
         <Route path="dashboard" element={<Dashboard />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <Route path="sendmoney" element={<Sendmoney />} />
+        <Route path="addmoney" element={<Addmoney />} />
+>>>>>>> a0b2d47474a3d350bdfadb940ce6ca1b3cdc063b
 =======
         <Route path="sendmoney" element={<Sendmoney />} />
         <Route path="addmoney" element={<Addmoney />} />
