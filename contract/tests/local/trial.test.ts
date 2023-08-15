@@ -4,17 +4,18 @@ import { Allowance, SVer } from '../../src/contracts/trial'
 import {
     bsv,
     ByteString,
+    ContractTransaction,
     findSig,
     FixedArray,
     hash160,
-    HashedMap,
     MethodCallOptions,
     PubKey,
     PubKeyHash,
     toByteString,
     toHex,
+    Utils,
 } from 'scrypt-ts'
-import { dummyUTXO, getDummySigner, inputSatoshis } from '../utils/txHelper'
+import { dummyUTXO, getDummySigner, getDummyUTXO, inputSatoshis } from '../utils/txHelper'
 
 use(chaiAsPromised)
 import Transaction = bsv.Transaction
@@ -23,9 +24,12 @@ import { myPublicKey } from '../utils/privateKey'
 const signer = getDummySigner()
 
 describe('Test SmartContract `SVer`', () => {
+
+    let inst: SVer
+
     before(async () => {
-        let inst: SVer, balances: FixedArray<Allowance, 2>
         await SVer.compile()
+
         inst = new SVer()
         await inst.connect(signer)
     })
@@ -47,13 +51,14 @@ describe('Test SmartContract `SVer`', () => {
             category: category,
         }
 
-        const { nexts, tx } = await instance.methods.allocateFunds(
+        const res = await instance.methods.allocateFunds(
             addr,
             category,
             amount,
             {
-                fromUTXO: dummyUTXO,
+                fromUTXO: getDummyUTXO(inputSatoshis),
                 pubKeyOrAddrToSign: myPublicKey,
+                changeAddress: myPublicKey.toAddress(),
                 next: {
                     instance: newInstance,
                     balance: inputSatoshis,
@@ -62,8 +67,8 @@ describe('Test SmartContract `SVer`', () => {
         )
 
         return {
-            tx: tx,
-            newInstance: nexts[0].instance,
+            tx: res.tx,
+            newInstance: newInstance,
         }
     }
 
@@ -89,6 +94,51 @@ describe('Test SmartContract `SVer`', () => {
         }
 
         const publicKey = bsv.PublicKey.fromString(sender_pubkey)
+
+        // Bind custom TX builder to add P2PKH output.
+        instance.bindTxBuilder('transferFunds', (
+            current: SVer,
+            options: MethodCallOptions<SVer>,
+            ...args
+        ): Promise<ContractTransaction> => {
+            const unsignedTx: Transaction = new Transaction()
+                // add contract input
+                .addInput(current.buildContractInput(options.fromUTXO))
+                // build next instance output
+                .addOutput(
+                    new Transaction.Output({
+                        script: newInstance.lockingScript,
+                        satoshis: inputSatoshis,
+                    })
+                )
+                // build P2PKH output
+                .addOutput(
+                    new Transaction.Output({
+                        script: bsv.Script.fromHex(
+                            Utils.buildPublicKeyHashScript(hash160(sender_pubkey))
+                        ),
+                        satoshis: Number(amount),
+                    })
+                )
+
+            // build change output
+            if (options.changeAddress) {
+                unsignedTx.change(options.changeAddress)
+            }
+
+            return Promise.resolve({
+                tx: unsignedTx,
+                atInputIndex: 0,
+                nexts: [
+                    {
+                        instance: newInstance,
+                        atOutputIndex: 0,
+                        balance: inputSatoshis,
+                    },
+                ],
+            })
+        })
+
         const { nexts, tx } = await instance.methods.transferFunds(
             sender,
             sender_pubkey,
@@ -97,8 +147,9 @@ describe('Test SmartContract `SVer`', () => {
             amount,
             to,
             {
-                fromUTXO: dummyUTXO,
+                fromUTXO: getDummyUTXO(inputSatoshis),
                 pubKeyOrAddrToSign: publicKey,
+                changeAddress: publicKey.toAddress(),
                 next: {
                     instance: newInstance,
                     balance: inputSatoshis,
@@ -116,16 +167,16 @@ describe('Test SmartContract `SVer`', () => {
         const address = await signer.getDefaultAddress()
 
         const aliceKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
-        signer.addPrivateKey(aliceKey)
-
         const alicePubkey = PubKey(toHex(aliceKey.publicKey))
-
         const aliceAddress = PubKeyHash(aliceKey.toAddress().toObject().hash)
-        const bobKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
-        signer.addPrivateKey(bobKey)
-        const bobPubkey = PubKey(toHex(bobKey.publicKey))
 
+        const bobKey = bsv.PrivateKey.fromRandom(bsv.Networks.testnet)
+        const bobPubkey = PubKey(toHex(bobKey.publicKey))
         const bobAddress = PubKeyHash(bobKey.toAddress().toObject().hash)
+
+        signer.addPrivateKey(aliceKey)
+        signer.addPrivateKey(bobKey)
+
         const aliceCategory = toByteString('Food', true)
         const aliceBalance = 1000n
 
@@ -139,6 +190,7 @@ describe('Test SmartContract `SVer`', () => {
         // Check if the allocation transaction was successful
         const result1 = tx1.verify()
         expect(result1).to.be.true
+
 
         const { tx: tx2, newInstance: inst_2 } = await transferFunds(
             inst_1,
