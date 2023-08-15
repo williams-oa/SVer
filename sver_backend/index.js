@@ -15,10 +15,17 @@ const cors = require("cors");
 dotenv.config();
 const app = express();
 
+const corsOptions = {
+  origin: "http://localhost:3000", // Allow requests from your frontend app
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+
 //body parser
 app.use(json());
-app.use(cors());
+app.use(cors(corsOptions));
 // app.use(bodyParser.json);
+
 
 mongoose
   .connect(
