@@ -1,23 +1,19 @@
-import { SVer, Allowance } from '../../src/contracts/trial'
+import { SVer } from '../../src/contracts/trial'
 import {
-    dummyUTXO,
     getDefaultSigner,
-    inputSatoshis,
     randomPrivateKey,
 } from '../utils/txHelper'
-import { myPublicKey, myPublicKeyHash } from '../utils/privateKey'
 
 import {
     bsv,
+    ContractTransaction,
     findSig,
-    hash160,
-    HashedMap,
     MethodCallOptions,
     PubKey,
     PubKeyHash,
     toByteString,
     toHex,
-    utxoFromOutput,
+    Utils,
 } from 'scrypt-ts'
 
 async function main() {
@@ -40,9 +36,8 @@ async function main() {
     const aliceCategory = toByteString('Food', true)
 
     // connect to a signer
-    await erc20.connect(
-        getDefaultSigner([alicePrivateKey, bobPrivateKey, lilyPrivateKey])
-    )
+    const signer = getDefaultSigner([alicePrivateKey, bobPrivateKey, lilyPrivateKey])
+    await erc20.connect(signer)
 
     // deploy
     const deployTx = await erc20.deploy()
@@ -81,8 +76,6 @@ async function main() {
 
     const bobInstance = aliceInstance.next()
 
-    // TODO: Fix all below this line...
-
     bobInstance.balances[0].balance = aliceBalance - transferAmount
     bobInstance.balances[1] = {
         address: bobAddress,
@@ -90,15 +83,60 @@ async function main() {
         balance: bobBalance + transferAmount,
     }
 
+    // Bind custom TX builder to add P2PKH output.
+    aliceInstance.bindTxBuilder('transferFunds', (
+        current: SVer,
+        options: MethodCallOptions<SVer>,
+        ...args
+    ): Promise<ContractTransaction> => {
+        const unsignedTx: bsv.Transaction = new bsv.Transaction()
+            // add contract input
+            .addInput(current.buildContractInput(options.fromUTXO))
+            // build next instance output
+            .addOutput(
+                new bsv.Transaction.Output({
+                    script: bobInstance.lockingScript,
+                    satoshis: lockedSatoshi,
+                })
+            )
+            // build P2PKH output
+            .addOutput(
+                new bsv.Transaction.Output({
+                    script: bsv.Script.fromHex(
+                        Utils.buildPublicKeyHashScript(aliceAddress)
+                    ),
+                    satoshis: Number(transferAmount),
+                })
+            )
+
+        // build change output
+        if (options.changeAddress) {
+            unsignedTx.change(options.changeAddress)
+        }
+
+        return Promise.resolve({
+            tx: unsignedTx,
+            atInputIndex: 0,
+            nexts: [
+                {
+                    instance: bobInstance,
+                    atOutputIndex: 0,
+                    balance: lockedSatoshi,
+                },
+            ],
+        })
+    })
+
     const { tx: transferTx } = await aliceInstance.methods.transferFunds(
         aliceAddress,
-        alicePubKey,
+        PubKey(alicePubKey.toHex()),
         (sigResps) => findSig(sigResps, alicePubKey),
         aliceCategory,
         transferAmount,
         bobAddress,
         {
             pubKeyOrAddrToSign: alicePubKey,
+            changeAddress: await signer.getDefaultAddress(),
             next: {
                 instance: bobInstance,
                 balance: lockedSatoshi,

@@ -46,7 +46,7 @@ export class SVer extends SmartContract {
      * @param category Category to allocate the funds to
      * @param amount Amount of tokens to allocate
      */
-    @method(SigHash.SINGLE)
+    @method()
     public allocateFunds(
         addr: PubKeyHash,
         category: ByteString,
@@ -58,7 +58,7 @@ export class SVer extends SmartContract {
             balance: amount,
             category: category,
         }
-
+        
         let outputs = this.buildStateOutput(this.ctx.utxo.value)
         outputs += this.buildChangeOutput()
 
