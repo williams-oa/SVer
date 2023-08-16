@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import {Scrypt, bsv} from 'scrypt-ts'
 
-// const root = ReactDOM.createRoot(document.querySelector("#root"));
-
-// root.render(<App />);
+Scrypt.init({
+    apiKey: process.env.REACT_APP_API_KEY || '',
+    network: bsv.Networks.testnet
+})
 
 ReactDOM.render(
     <React.StrictMode>
