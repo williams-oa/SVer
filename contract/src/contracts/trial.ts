@@ -14,7 +14,12 @@ import {
     fill,
     toByteString,
     Utils,
+    ContractTransaction,
+    MethodCallOptions,
+    bsv,
+    StatefulNext,
 } from 'scrypt-ts'
+import { Script } from 'vm'
 
 export type Allowance = {
     address: PubKeyHash
@@ -58,7 +63,7 @@ export class SVer extends SmartContract {
             balance: amount,
             category: category,
         }
-        
+
         let outputs = this.buildStateOutput(this.ctx.utxo.value)
         outputs += this.buildChangeOutput()
 
@@ -118,5 +123,51 @@ export class SVer extends SmartContract {
             this.ctx.hashOutputs == hash256(outputs),
             'Check hashOutputs failed'
         )
+    }
+    static transferTxBuilder(
+        current: SVer,
+        options: MethodCallOptions<SVer>,
+        sender: PubKeyHash,
+        sender_pubkey: PubKey,
+        _category: ByteString,
+        amount: bigint,
+        to: PubKeyHash
+    ): Promise<ContractTransaction> {
+        const balance = current.balances[0]
+        const next = options.next as StatefulNext<SVer>
+
+        const unsignedTx: bsv.Transaction = new bsv.Transaction()
+            // add contract input
+            .addInput(current.buildContractInput(options.fromUTXO))
+            // build next instance output
+            .addOutput(
+                new bsv.Transaction.Output({
+                    script: next.instance.lockingScript,
+                    satoshis: next.balance,
+                })
+            )
+            // build refund output
+            .addOutput(
+                new bsv.Transaction.Output({
+                    script: bsv.Script.fromHex(
+                        Utils.buildPublicKeyHashScript(balance.address)
+                    ),
+                    satoshis: Number(balance.balance),
+                })
+            )
+            // build change output
+            .change(options.changeAddress)
+
+        return Promise.resolve({
+            tx: unsignedTx,
+            atInputIndex: 0,
+            nexts: [
+                {
+                    instance: next.instance,
+                    atOutputIndex: 0,
+                    balance: next.balance,
+                },
+            ],
+        })
     }
 }
