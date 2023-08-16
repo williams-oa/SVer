@@ -22,7 +22,7 @@ const Sendmoney = () => {
 
   const handleSendClick = () => {
     setTransactionSuccess(true);
-    const redirectUrl = `https://www.whatsonchain.com/address/${encodeURIComponent(
+    const redirectUrl = `https://test.whatsonchain.com/tx/${encodeURIComponent(
       fromAddress
     )}`;
     setTimeout(() => {
@@ -36,7 +36,7 @@ const Sendmoney = () => {
         <section className="success">
           <h1>Transaction Successful!</h1>
           <br />
-          <h2>Redirecting to transaction history on whatsonchain...</h2>
+          <h2>Redirecting to transaction history on whatsonchain...⌛️</h2>
         </section>
       ) : (
         <div>
