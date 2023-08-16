@@ -7,6 +7,8 @@ const Sendmoney = () => {
   const [selectedVendor, setSelectedVendor] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
+  const [fromAddress, setFromAddress] = useState("");
+  const [transactionSuccess, setTransactionSuccess] = useState(false);
 
   const handleVendorClick = (
     title: string,
@@ -18,49 +20,81 @@ const Sendmoney = () => {
     setSelectedAddress(address);
   };
 
+  const handleSendClick = () => {
+    setTransactionSuccess(true);
+    const redirectUrl = `https://www.whatsonchain.com/address/${encodeURIComponent(
+      fromAddress
+    )}`;
+    setTimeout(() => {
+      window.location.href = redirectUrl;
+    }, 2000);
+  };
+
   return (
-    <div>
-      <Sidebar />
-      <div className="sendmoney">
-        <div className="sendmoney_dash_wrapper">
-          {vendors.map(({ id, icon, title, address, category }) => (
-            <div
-              className="sendmoney_value"
-              key={id}
-              onClick={() => handleVendorClick(title, category, address)}
-            >
-              <span>{icon}</span>
-              <h4>{title}</h4>
-            </div>
-          ))}
+    <>
+      {transactionSuccess ? (
+        <section className="success">
+          <h1>Transaction Successful!</h1>
           <br />
-        </div>
-      </div>
+          <h2>Redirecting to transaction history on whatsonchain...</h2>
+        </section>
+      ) : (
+        <div>
+          <Sidebar />
 
-      <form className="sendmoneynow">
-        <div className="form-item">
-          <label htmlFor="vendor">Recipient:</label>
-          <input type="text" value={selectedVendor || ""} />
-        </div>
+          <div className="sendmoney">
+            <div className="sendmoney_dash_wrapper">
+              {vendors.map(({ id, icon, title, address, category }) => (
+                <div
+                  className="sendmoney_value"
+                  key={id}
+                  onClick={() => handleVendorClick(title, category, address)}
+                >
+                  <span>{icon}</span>
+                  <h4>{title}</h4>
+                </div>
+              ))}
+              <br />
+            </div>
+          </div>
 
-        <div className="form-item">
-          <label htmlFor="category">Category:</label>
-          <input type="text" value={selectedCategory || ""} />
-        </div>
+          <form className="sendmoneynow">
+            <div className="send-money-form">
+              <label htmlFor="sender">From:</label>
+              <input
+                type="text"
+                value={fromAddress}
+                onChange={(e) => setFromAddress(e.target.value)}
+              />
+            </div>
 
-        <div className="form-item">
-          <label htmlFor="address">Address</label>
-          <input type="text" value={selectedAddress || ""} />
-        </div>
+            <div className="send-money-form">
+              <label htmlFor="vendor">Recipient:</label>
+              <input type="text" value={selectedVendor || ""} />
+            </div>
 
-        <div className="form-item">
-          <label htmlFor="amount">Amount</label>
-          <input type="number" />
-        </div>
+            <div className="send-money-form">
+              <label htmlFor="category">Category:</label>
+              <input type="text" value={selectedCategory || ""} />
+            </div>
 
-        <button className="btn">Send</button>
-      </form>
-    </div>
+            <div className="send-money-form">
+              <label htmlFor="address">Address</label>
+              <input type="text" value={selectedAddress || ""} />
+            </div>
+
+            <div className="send-money-form">
+              <label htmlFor="amount">Amount</label>
+              <input type="number" />
+            </div>
+
+            <button className="btn" onClick={handleSendClick}>
+              Send
+            </button>
+          </form>
+        </div>
+      )}
+    </>
   );
 };
 
