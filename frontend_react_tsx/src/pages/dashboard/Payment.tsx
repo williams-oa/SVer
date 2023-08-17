@@ -16,7 +16,7 @@ const Payment = () => {
           <div className="logo">
             <BiHomeAlt />
           </div>
-          <div className="context">
+          <div className="contextt">
             <h5>Home Rent</h5>
             <h6>2790BSV</h6>
           </div>
@@ -27,7 +27,7 @@ const Payment = () => {
           <div className="logo">
             <BiCar />
           </div>
-          <div className="context">
+          <div className="contextt">
             <h5>Transport</h5>
             <h6>150BSV</h6>
           </div>

@@ -119,6 +119,12 @@ const students = [
       privateKeyId: "#privKey20",
       publicKeyId: "#pubKey20",
       addressId: "#address20"
+    },
+    {
+      privateKey: "cNEzr9ig96njP7PUjekE2ErUs8S3719y45pXKwmgRCrJXBM4AW5r",
+      privateKeyId: "#privKey21",
+      publicKeyId: "#pubKey21",
+      addressId: "#address21"
     }
   ];
   

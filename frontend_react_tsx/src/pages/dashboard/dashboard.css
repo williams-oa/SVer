@@ -27,12 +27,15 @@
     flex-direction: row;
 }
 
-.user__content:hover {
-    background: var(--color-gray-500);
-    border-color: var(--color-gray-400);
-    cursor: default;
-    /* so when we hover, it doesn't look like we are about to select an item */
+.user__content {
+    background: var(--color-gray-100);
 }
+
+.user__content h3, h5, small {
+    color: var(--color-gray-500);
+}
+
+
 
 .wadd { 
     max-width: 300px;
@@ -48,6 +51,8 @@
 
 .dash__right {
     margin: 0 1rem 0 1rem;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .vendors_dash_wrapper {
@@ -79,8 +84,16 @@
 }
 .balance {
     height: 70px;
-    
+    width: auto;
+    background-color: var(--color-gray-100);
+    margin-bottom: 2rem;
+    border-radius: 5%;
+    border-color: black;  
 }
+.balance h3 {
+    color: black;
+}
+
 
 /* +++++++++++++++++++++++++++++++++++++++++++BUTTON TO SIGN OUT+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
@@ -110,4 +123,14 @@
   .btn-danger:focus-visible {
     background: hsl(0, 100%, 40%, 0.2);
   }
-  
+  /* +++++++++++++++++++++++++++++++++++++++++ADVERT+++++++++++++++++++++++++++ */
+  .advert {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+.advert h2 {
+    color: black;
+
+}

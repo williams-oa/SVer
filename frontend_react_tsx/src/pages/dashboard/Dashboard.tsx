@@ -8,6 +8,11 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import Sidebar from "./Sidebar";
 import Rightsidebar from "./Rightsidebar";
 import "./dashboard.css";
+import { useEffect, useState } from "react";
+
+const coke = require("../../images/coke.jpg");
+const clothes = require("../../images/clothes.jpg");
+
 
 interface DecodedToken {
   username: string;
@@ -15,7 +20,6 @@ interface DecodedToken {
   id: string;
   address: string;
 }
-
 
 const Dashboard = () => {
   const location = useLocation();
@@ -28,6 +32,19 @@ const Dashboard = () => {
   const address = decodedToken.address;
 
   const navigate = useNavigate();
+
+  const [walbal, setWalbal] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://api.whatsonchain.com/v1/bsv/test/address/${address}/balance`)
+      .then((response) => response.json()) // Parse the response as JSON
+      .then((data) => {
+        // "data" contains the JSON response from the API
+        setWalbal(data.confirmed);
+        console.log(data); // Assuming the API response has a "balance" property
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [address]);
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
@@ -61,7 +78,7 @@ const Dashboard = () => {
           </div>
 
           <div className="dash__right">
-            <div className="vendors_dash_wrapper">
+            {/* <div className="vendors_dash_wrapper">
               {vendors.map(({ id, icon, title, desc }) => {
                 return (
                   <div className="dash_value" key={id}>
@@ -70,10 +87,15 @@ const Dashboard = () => {
                   </div>
                 );
               })}
+
+              
               <br />
-              <div className="balance">Your account balance:</div>
-              <br />
+            </div> */}
+
+            <div className="balance">
+              <h3>Account balance - confirmed: {walbal} </h3>
             </div>
+
             <Link to="/sendmoneyy" className="btn lg">
               SEND MONEY
             </Link>
@@ -83,6 +105,13 @@ const Dashboard = () => {
             </Link>
           </div>
         </div>
+
+        <div className="advert">
+          <h2>Adverts</h2>
+          <img src={coke} alt="cocacola" />
+          <img src={clothes} alt="cocacola" />
+        </div>
+
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import "../pages/home/home.css";
 import { Link } from "react-router-dom";
-import Image from "../images/padlock.jpg";
+const Image = require ("../images/padlock.jpg");
 
 const MainHeader = () => {
   return (

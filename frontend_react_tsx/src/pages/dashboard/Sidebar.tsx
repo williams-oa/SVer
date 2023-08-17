@@ -79,7 +79,7 @@ export default Sidebar
 const Section = styled.article`
     float: left;
     background-color: #ECECF6;
-    height: 100vh;
+    min-height: 242vh;
     width: 6vw;
     display: flex;
     flex-direction: column;

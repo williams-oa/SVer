@@ -16,7 +16,7 @@ function Activity() {
           <div className="logo">
             <GiPayMoney />
           </div>
-          <div className="context">
+          <div className="contextt">
             <h5>Rent payment:</h5>
             <h6>120BSV</h6>
           </div>
@@ -28,7 +28,7 @@ function Activity() {
           <div className="logo">
             <MdFastfood />
           </div>
-          <div className="context">
+          <div className="contextt">
             <h5>Food payment:</h5>
             <h6>150BSV</h6>
           </div>

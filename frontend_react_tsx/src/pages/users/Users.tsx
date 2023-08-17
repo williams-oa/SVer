@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "../../UI/Card";
 import { BiSolidUserCircle } from "react-icons/bi";
 import SectionHead from "../../components/SectionHead";
+import { bsv } from "scrypt-ts";
 
 interface UserType {
   _id: string;
@@ -20,6 +21,7 @@ function Users() {
       .then((response) => response.json())
       .then((data) => {
         setBackendData(data);
+
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -30,7 +32,8 @@ function Users() {
         <SectionHead icon={<BiSolidUserCircle />} title="Users" />
         <h2>These are the registered users on our platform:</h2>
         <article className="searchbar">
-          <input type="text" />
+          
+          <input placeholder="search" type="text" />
           <button className="btn sm">Search</button>
         </article>
         <div className="users__wrapper">
