@@ -2,12 +2,11 @@ import { useState } from "react";
 import "./about.css";
 import Footer from "../../components/Footer";
 
-
-const Olly = require ("../../images/Olly.jpg")
-const Mic = require  ("../../images/Mic.jpg");
-const Nick = require  ("../../images/Nick.jpg");
-const Timi = require  ("../../images/Timi.jpg");
-
+const Olly = require("../../images/Olly.jpg");
+const Mic = require("../../images/Mic.jpg");
+const Nick = require("../../images/Nick.jpg");
+const Timi = require("../../images/Timi.jpg");
+const Aabir = require("../../images/Aabir.jpeg");
 
 const About = () => {
   const [toggleTab, setToggleTab] = useState(1);
@@ -97,7 +96,7 @@ const About = () => {
 
                   <h3>Pearl</h3>
 
-                  <span>CEO</span>
+                  <span>Co-founder & front-end developer</span>
 
                   <p>
                     Pearl is the driving force at SVer, serving as CEO,
@@ -114,7 +113,7 @@ const About = () => {
 
                   <h3>Micheal</h3>
 
-                  <span>Front-end and Smart Contract Analyst</span>
+                  <span>Co-founder, Front-end & Blockchain Developer</span>
 
                   <p>
                     Micheal combines expertise in front-end development and
@@ -131,22 +130,22 @@ const About = () => {
                 <div className="team-column">
                   <img src={Timi} alt="Avatar" />
 
-                  <h3>Rotimi</h3>
+                  <h3>Oluwarotimi Williams</h3>
 
-                  <span>Front-end Developer</span>
+                  <span>Co-founder & Front-end Developer</span>
 
                   <p>
                     Rotimi is a skilled and dedicated front-end developer at
                     SVer, contributing to the creation of exceptional user
                     experiences. With a keen eye for design and a mastery of
-                    HTML, CSS, and JavaScript, he crafts intuitive and visually
-                    appealing interfaces for SVer's web applications. Rotimi's
-                    expertise in responsive design ensures that users have a
-                    consistent and engaging interaction across various devices.
-                    His collaborative spirit and problem-solving abilities make
-                    him an invaluable asset to the team, enhancing SVer's
-                    commitment to delivering top-notch user interfaces in the
-                    realm of blockchain technology.
+                    react, he crafts intuitive and visually appealing interfaces
+                    for SVer's web applications. Rotimi's expertise in
+                    responsive design ensures that users have a consistent and
+                    engaging interaction across various devices. His
+                    collaborative spirit and problem-solving abilities make him
+                    an invaluable asset to the team, enhancing SVer's commitment
+                    to delivering top-notch user interfaces in the realm of
+                    blockchain technology.
                   </p>
                 </div>
 
@@ -155,7 +154,7 @@ const About = () => {
 
                   <h3>Nick</h3>
 
-                  <span>Smart Contract Analyst</span>
+                  <span>Co-founder & Blockchain developer</span>
 
                   <p>
                     Nick stands as a proficient Smart Contract (Scrypt)
@@ -169,6 +168,23 @@ const About = () => {
                     standards. His role is integral to SVer's mission of
                     pioneering advancements in blockchain technology through
                     robust and functional smart contracts.
+                  </p>
+                </div>
+
+                <div className="team-column">
+                  <img src={Aabir} alt="Aabir" />
+
+                  <h3>Aabir Roy</h3>
+
+                  <span>Co-founder & Back-end Developer</span>
+
+                  <p>
+                    Aabir is an experienced backend developer adept in
+                    designing, developing, and optimizing server-side
+                    applications using languages like Python, Java, and Node.js.
+                    He is skilled in database management, RESTful API design, and
+                    cloud deployment, with a focus on security and performance.
+                    
                   </p>
                 </div>
               </div>

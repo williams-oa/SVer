@@ -9,7 +9,11 @@ function Offers() {
   return (
     <section className="offers">
       <div className="container offers__container">
-        <SectionHead icon={<SiBitcoinsv />} title="Our unique offers" className={undefined} />
+        <SectionHead
+          icon={<SiBitcoinsv />}
+          title="Our unique offers"
+          className={undefined}
+        />
 
         <div className="offers__wrapper">
           {offers.map(({ id, icon, title, info, path }) => {

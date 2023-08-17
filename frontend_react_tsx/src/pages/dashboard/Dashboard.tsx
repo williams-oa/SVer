@@ -10,7 +10,7 @@ import Rightsidebar from "./Rightsidebar";
 import "./dashboard.css";
 import { useEffect, useState } from "react";
 
-const coke = require("../../images/coke.jpg");
+const advert = require("../../images/advert.png");
 const clothes = require("../../images/clothes.jpg");
 
 interface DecodedToken {
@@ -110,7 +110,7 @@ const Dashboard = () => {
 
         <div className="advert">
           <h2>--Adverts--</h2>
-          <img src={coke} alt="cocacola" />
+          <img src={advert} alt="cocacola" />
           <img src={clothes} alt="cocacola" />
         </div>
       </div>
