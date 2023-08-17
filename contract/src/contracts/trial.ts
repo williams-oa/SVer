@@ -88,7 +88,6 @@ export class SVer extends SmartContract {
     public transferFunds(
         sender: PubKeyHash,
         sender_pubkey: PubKey,
-        sig: Sig,
         _category: ByteString,
         amount: bigint,
         to: PubKeyHash
@@ -104,7 +103,6 @@ export class SVer extends SmartContract {
         )
         assert(this.balances[0].category == _category, 'Not the right category')
         assert(hash160(sender_pubkey) == sender, 'Check signature failed')
-        assert(this.checkSig(sig, sender_pubkey), 'Check signature failed')
 
         // Transfer amount is reflected t
         this.balances[0].balance -= amount

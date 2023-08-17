@@ -11,13 +11,18 @@ import {
   SensiletSigner,
   toByteString,
   MethodCallOptions,
+  ContractTransaction,
+  bsv,
+  StatefulNext,
+  Utils,
+  hash160,
 } from "scrypt-ts";
 import { SVer } from "../../contracts/myApp";
 //he imported item as well from his smart contract
 import { sign } from "crypto";
 
 const contractId = {
-  txId: "38ed4c8c0cced7790e484208f1558ff95927e76c812e0e222966abfb8d75c66a",
+  txId: "042acc765bb753093ded200e041e251d22c0282165c5e30c015f58f2b3efe124",
   outputIndex: 0,
 };
 
@@ -69,7 +74,7 @@ const Sendmoneyy = () => {
   }) => {
     const { sender, sender_pubkey, _category, amount, to } = newitem;
     const signer = signerRef.current as SensiletSigner;
-    
+
     if (contractInstance && signer) {
       const { isAuthenticated, error } = await signer.requestAuth();
 
@@ -78,9 +83,71 @@ const Sendmoneyy = () => {
       }
       await contractInstance.connect(signer);
 
+      // Build next instance and update needed properties.
       const nextInstance = contractInstance.next();
+      // Transfer amount is reflected t
+      nextInstance.balances[0].balance -= BigInt(amount);
+      // Update receivers data in the fixed array
+      nextInstance.balances[1] = {
+        address: PubKeyHash(to),
+        category: toByteString(_category),
+        balance: BigInt(amount),
+      };
 
-      contractInstance.bindTxBuilder("transferFunds", SVer.tranferTxBuilder);
+      contractInstance.bindTxBuilder(
+        "transferFunds",
+        (
+          current: SVer,
+          options: MethodCallOptions<SVer>,
+          sender: PubKeyHash,
+          sender_pubkey: PubKey,
+          _category: ByteString,
+          amount: bigint,
+          to: PubKeyHash
+        ): Promise<ContractTransaction> => {
+          const next = options.next as StatefulNext<SVer>;
+          if (!next) {
+            throw Error("Missing next option");
+          }
+
+          const unsignedTx: bsv.Transaction = new bsv.Transaction()
+            // add contract input
+            .addInput(current.buildContractInput(options.fromUTXO))
+            // build next instance output
+            .addOutput(
+              new bsv.Transaction.Output({
+                script: next.instance.lockingScript,
+                satoshis: current.balance,
+              })
+            )
+            // Pay seller output
+            .addOutput(
+              new bsv.Transaction.Output({
+                script: bsv.Script.fromHex(
+                  Utils.buildPublicKeyHashScript(hash160(sender_pubkey))
+                ),
+                satoshis: Number(amount),
+              })
+            );
+
+          // build change output
+          if (options.changeAddress) {
+            unsignedTx.change(options.changeAddress);
+          }
+
+          return Promise.resolve({
+            tx: unsignedTx,
+            atInputIndex: 0,
+            nexts: [
+              {
+                instance: nextInstance,
+                atOutputIndex: 0,
+                balance: current.balance,
+              },
+            ],
+          });
+        }
+      );
 
       contractInstance.methods
         .transferFunds(
@@ -98,7 +165,7 @@ const Sendmoneyy = () => {
           } as MethodCallOptions<SVer>
         )
         .then((result) => {
-          console.log(`Transfer tx: ${result.tx.id}`); 
+          console.log(`Transfer tx: ${result.tx.id}`);
         })
         .catch((e) => {
           console.error(`Transfer error: ${e}`);

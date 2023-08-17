@@ -15,7 +15,12 @@ import {
     toHex,
     Utils,
 } from 'scrypt-ts'
-import { dummyUTXO, getDummySigner, getDummyUTXO, inputSatoshis } from '../utils/txHelper'
+import {
+    dummyUTXO,
+    getDummySigner,
+    getDummyUTXO,
+    inputSatoshis,
+} from '../utils/txHelper'
 
 use(chaiAsPromised)
 import Transaction = bsv.Transaction
@@ -24,7 +29,6 @@ import { myPublicKey } from '../utils/privateKey'
 const signer = getDummySigner()
 
 describe('Test SmartContract `SVer`', () => {
-
     let inst: SVer
 
     before(async () => {
@@ -96,53 +100,57 @@ describe('Test SmartContract `SVer`', () => {
         const publicKey = bsv.PublicKey.fromString(sender_pubkey)
 
         // Bind custom TX builder to add P2PKH output.
-        instance.bindTxBuilder('transferFunds', (
-            current: SVer,
-            options: MethodCallOptions<SVer>,
-            ...args
-        ): Promise<ContractTransaction> => {
-            const unsignedTx: Transaction = new Transaction()
-                // add contract input
-                .addInput(current.buildContractInput(options.fromUTXO))
-                // build next instance output
-                .addOutput(
-                    new Transaction.Output({
-                        script: newInstance.lockingScript,
-                        satoshis: inputSatoshis,
-                    })
-                )
-                // build P2PKH output
-                .addOutput(
-                    new Transaction.Output({
-                        script: bsv.Script.fromHex(
-                            Utils.buildPublicKeyHashScript(hash160(sender_pubkey))
-                        ),
-                        satoshis: Number(amount),
-                    })
-                )
+        instance.bindTxBuilder(
+            'transferFunds',
+            (
+                current: SVer,
+                options: MethodCallOptions<SVer>,
+                ...args
+            ): Promise<ContractTransaction> => {
+                const unsignedTx: Transaction = new Transaction()
+                    // add contract input
+                    .addInput(current.buildContractInput(options.fromUTXO))
+                    // build next instance output
+                    .addOutput(
+                        new Transaction.Output({
+                            script: newInstance.lockingScript,
+                            satoshis: inputSatoshis,
+                        })
+                    )
+                    // build P2PKH output
+                    .addOutput(
+                        new Transaction.Output({
+                            script: bsv.Script.fromHex(
+                                Utils.buildPublicKeyHashScript(
+                                    hash160(sender_pubkey)
+                                )
+                            ),
+                            satoshis: Number(amount),
+                        })
+                    )
 
-            // build change output
-            if (options.changeAddress) {
-                unsignedTx.change(options.changeAddress)
+                // build change output
+                if (options.changeAddress) {
+                    unsignedTx.change(options.changeAddress)
+                }
+
+                return Promise.resolve({
+                    tx: unsignedTx,
+                    atInputIndex: 0,
+                    nexts: [
+                        {
+                            instance: newInstance,
+                            atOutputIndex: 0,
+                            balance: inputSatoshis,
+                        },
+                    ],
+                })
             }
-
-            return Promise.resolve({
-                tx: unsignedTx,
-                atInputIndex: 0,
-                nexts: [
-                    {
-                        instance: newInstance,
-                        atOutputIndex: 0,
-                        balance: inputSatoshis,
-                    },
-                ],
-            })
-        })
+        )
 
         const { nexts, tx } = await instance.methods.transferFunds(
             sender,
             sender_pubkey,
-            (sigResps) => findSig(sigResps, publicKey),
             _category,
             amount,
             to,
@@ -190,7 +198,6 @@ describe('Test SmartContract `SVer`', () => {
         // Check if the allocation transaction was successful
         const result1 = tx1.verify()
         expect(result1).to.be.true
-
 
         const { tx: tx2, newInstance: inst_2 } = await transferFunds(
             inst_1,
