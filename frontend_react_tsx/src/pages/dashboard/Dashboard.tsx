@@ -74,7 +74,7 @@ const Dashboard = () => {
               <div className="balance">Your account balance:</div>
               <br />
             </div>
-            <Link to="/sendmoney" className="btn lg">
+            <Link to="/sendmoneyy" className="btn lg">
               SEND MONEY
             </Link>
 

@@ -10,8 +10,9 @@ import NotFound from "./pages/notFound/NotFound";
 import Navbar from "./components/Navbar";
 import Users from "./pages/users/Users";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Sendmoney from "./pages/sendmoney/Sendmoney";
+//import Sendmoney from "./pages/sendmoney.tsx/Sendmoney";
 import Addmoney from "./pages/addmoney/Addmoney";
+import Sendmoneyy from "./pages/sendmoney.tsx/Sendmoneyy";
 
 const App = () => {
 
@@ -28,7 +29,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="users" element={<Users />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="sendmoney" element={<Sendmoney />} />
+        <Route path="sendmoneyy" element={<Sendmoneyy />} />
         <Route path="addmoney" element={<Addmoney />} />
       </Routes>
     </BrowserRouter>
