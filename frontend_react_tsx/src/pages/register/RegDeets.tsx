@@ -6,9 +6,9 @@ function RegDeets() {
   return (
     <div className="leftside">
       <h1>
-        Send &amp; Receive funds
+        Funds with purpose
         <br />
-        <p className="securely">Securely!</p>
+        <p className="securely">Budget with clarity! </p>
       </h1>
       <br />
       <h3 className="text1">
@@ -20,10 +20,10 @@ function RegDeets() {
         Take charge of your financial accountability today with SVer. Together,
         we can make a difference.
       </p>
-      <br />
+      {/* <br />
       <Link to="/users" className="btn lg">
         View All Users
-      </Link>
+      </Link> */}
     </div>
   );
 }

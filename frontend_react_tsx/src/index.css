@@ -172,3 +172,7 @@ section {
 .offers__offer small {
     color: white;
 }
+
+.vendors__value small {
+    color: white;
+}
