@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 const coke = require("../../images/coke.jpg");
 const clothes = require("../../images/clothes.jpg");
 
-
 interface DecodedToken {
   username: string;
   email: string;
@@ -93,7 +92,10 @@ const Dashboard = () => {
             </div> */}
 
             <div className="balance">
-              <h3>Account balance - confirmed: {walbal} </h3>
+              <div className="acct">
+                <h3>Account balance:</h3>
+              </div>
+              <h3> {walbal} satoshis</h3>
             </div>
 
             <Link to="/sendmoneyy" className="btn lg">
@@ -107,11 +109,10 @@ const Dashboard = () => {
         </div>
 
         <div className="advert">
-          <h2>Adverts</h2>
+          <h2>--Adverts--</h2>
           <img src={coke} alt="cocacola" />
           <img src={clothes} alt="cocacola" />
         </div>
-
       </div>
     </>
   );

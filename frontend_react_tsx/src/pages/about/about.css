@@ -42,13 +42,13 @@
     width: 100%;
 }
 
-.context{
+.contexxt{
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     display:none
 }
 
-.active-context{
+.active-contexxt{
     display:block;
 }
 
@@ -74,7 +74,7 @@
     border-color: #1e388a transparent transparent transparent;
 }
 
-.context h2{
+.contexxt h2{
     font-size: 40px;
     font-weight: 700;
     line-height: 1.4;
@@ -82,7 +82,7 @@
     color: black
 }
 
-.context p{
+.contexxt p{
     padding-bottom: 1rem;
     font-size: 16px;
     line-height: 1.8;
@@ -91,7 +91,7 @@
     text-align: justify;
 }
 
-.context h3{
+.contexxt h3{
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.5;

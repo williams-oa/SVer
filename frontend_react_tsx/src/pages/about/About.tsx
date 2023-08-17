@@ -44,12 +44,12 @@ const About = () => {
               </div>
             </div>
 
-            <div className="tab-context">
+            <div className="tab-contexxt">
               {/* About content */}
 
               <div
                 className={
-                  toggleTab === 1 ? "context active-context" : "context"
+                  toggleTab === 1 ? "contexxt active-contexxt" : "contexxt"
                 }
               >
                 <h2>About Us</h2>
@@ -89,7 +89,7 @@ const About = () => {
 
               <div
                 className={
-                  toggleTab === 2 ? "context active-context" : "context"
+                  toggleTab === 2 ? "contexxt active-contexxt" : "contexxt"
                 }
               >
                 <div className="team-column">

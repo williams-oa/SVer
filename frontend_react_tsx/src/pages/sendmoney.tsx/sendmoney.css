@@ -14,8 +14,8 @@
   }
 
   .send-money-form label {
-    min-width: 120px; 
-    /* margin-right: 10px; */
+    min-width: 190px; 
+    margin-right: 10px;
   }
   .form-usertype label {
     min-width: 120px; 
@@ -23,7 +23,7 @@
 ;
   }
   .send-money-form input {
-    width: 100%;
+    width: 60%;
     padding: 10px;
     /* margin-bottom: 10px; */
     border: 1px solid #ccc;

@@ -168,3 +168,7 @@ section {
     display: block;
     font-weight: 300;
 }
+
+.offers__offer small {
+    color: white;
+}

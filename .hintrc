@@ -4,5 +4,11 @@
   ],
   "hints": {
     "meta-viewport": "off"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_ff <= 113",
+    "not firefox <= 114"
+  ]
 }
