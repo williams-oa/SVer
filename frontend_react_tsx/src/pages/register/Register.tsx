@@ -89,9 +89,9 @@ const Register = () => {
           withCredentials: true,
         }
       );
-      // console.log(response.data);
-      // console.log(response.accessToken);
-      // console.log(JSON.stringify(response));
+      //console.log(response.data);
+      //console.log(response.accessToken);
+      //console.log(JSON.stringify(response));
       setSuccess(true);
       //clear input fields
     } catch (err: any) {
@@ -267,7 +267,7 @@ const Register = () => {
               </div>
 
               <button
-                onClick={()=>handleSubmit}
+                onClick={handleSubmit}
                 className="btnn"
                 disabled={!validName || !validPwd || !validMatch ? true : false}
               >

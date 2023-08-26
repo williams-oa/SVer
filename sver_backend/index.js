@@ -20,12 +20,10 @@ const corsOptions = {
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
 
-
 //body parser
 app.use(json());
 app.use(cors(corsOptions));
 // app.use(bodyParser.json);
-
 
 mongoose
   .connect(
