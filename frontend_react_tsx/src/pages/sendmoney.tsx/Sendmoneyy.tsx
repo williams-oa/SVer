@@ -16,10 +16,12 @@ import {
   StatefulNext,
   Utils,
   hash160,
+  slice,
 } from "scrypt-ts";
 import { SVer } from "../../contracts/myApp";
 //he imported item as well from his smart contract
 import { sign } from "crypto";
+import { send } from "process";
 
 const contractId = {
   txId: "042acc765bb753093ded200e041e251d22c0282165c5e30c015f58f2b3efe124",
@@ -74,6 +76,8 @@ const Sendmoneyy = () => {
   }) => {
     const { sender, sender_pubkey, _category, amount, to } = newitem;
     const signer = signerRef.current as SensiletSigner;
+    const sender_pkh = bsv.Address.fromString(sender)
+    const receiver_pkh = bsv.Address.fromString(to)
 
     if (contractInstance && signer) {
       const { isAuthenticated, error } = await signer.requestAuth();
@@ -89,14 +93,14 @@ const Sendmoneyy = () => {
       nextInstance.balances[0].balance -= BigInt(amount);
       // Update receivers data in the fixed array
       nextInstance.balances[1] = {
-        address: PubKeyHash(to),
-        category: toByteString(_category),
+        address: PubKeyHash(receiver_pkh.toHex().slice(2)),
+        category: toByteString(_category, true),
         balance: BigInt(amount),
       };
 
       contractInstance.bindTxBuilder(
         "transferFunds",
-        (
+        async(
           current: SVer,
           options: MethodCallOptions<SVer>,
           sender: PubKeyHash,
@@ -105,18 +109,15 @@ const Sendmoneyy = () => {
           amount: bigint,
           to: PubKeyHash
         ): Promise<ContractTransaction> => {
-          const next = options.next as StatefulNext<SVer>;
-          if (!next) {
-            throw Error("Missing next option");
-          }
-
+        
+          console.log(nextInstance.lockingScript)
           const unsignedTx: bsv.Transaction = new bsv.Transaction()
             // add contract input
             .addInput(current.buildContractInput(options.fromUTXO))
             // build next instance output
             .addOutput(
               new bsv.Transaction.Output({
-                script: next.instance.lockingScript,
+                script: nextInstance.lockingScript,
                 satoshis: current.balance,
               })
             )
@@ -131,9 +132,10 @@ const Sendmoneyy = () => {
             );
 
           // build change output
-          if (options.changeAddress) {
-            unsignedTx.change(options.changeAddress);
-          }
+          
+            unsignedTx.change(await signer.getDefaultAddress());
+
+          console.log(options.changeAddress)
 
           return Promise.resolve({
             tx: unsignedTx,
@@ -149,13 +151,18 @@ const Sendmoneyy = () => {
         }
       );
 
+      
+      
+      console.log(sender_pkh.toHex())
+      console.log(receiver_pkh.toHex())
+
       contractInstance.methods
         .transferFunds(
-          PubKeyHash(sender),
+          PubKeyHash(sender_pkh.toHex().slice(2)),
           PubKey(sender_pubkey),
-          toByteString(_category),
+          toByteString(_category, true),
           BigInt(amount),
-          PubKeyHash(to),
+          PubKeyHash(receiver_pkh.toHex().slice(2)),
           {
             changeAddress: await signer.getDefaultAddress(),
             next: {

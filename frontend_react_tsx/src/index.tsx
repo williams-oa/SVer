@@ -8,9 +8,10 @@ import { SVer } from "./contracts/myApp";
 
 SVer.loadArtifact(artifact);
 
+console.log(
 Scrypt.init({
   apiKey: process.env.REACT_APP_API_KEY || "",
   network: bsv.Networks.testnet,
-});
+}));
 
 ReactDOM.render(<App />, document.getElementById("root"));
