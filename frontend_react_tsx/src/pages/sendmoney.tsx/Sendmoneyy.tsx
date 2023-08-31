@@ -151,11 +151,6 @@ const Sendmoneyy = () => {
         }
       );
 
-      
-      
-      console.log(sender_pkh.toHex())
-      console.log(receiver_pkh.toHex())
-
       contractInstance.methods
         .transferFunds(
           PubKeyHash(sender_pkh.toHex().slice(2)),
