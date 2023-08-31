@@ -26,7 +26,7 @@ export type Allowance = {
 export class SVer extends SmartContract {
   @prop(true)
   balances: FixedArray<Allowance, 2>;
-  static tranferTxBuilder: MethodCallTxBuilder<SVer>;
+
   constructor() {
     super(...arguments);
 
@@ -70,7 +70,6 @@ export class SVer extends SmartContract {
      * Transfer tokens from `from` to `to` account.
      * @param from Owner's account details
      * @param sender Owner's public key
-     * @param sig Owner's signature
      * @param category Category tag
      * @param amount Amount of tokens to transfer
      * @param to Receiver's account details
@@ -81,7 +80,6 @@ export class SVer extends SmartContract {
   public transferFunds(
     sender: PubKeyHash,
     sender_pubkey: PubKey,
-    sig: Sig,
     _category: ByteString,
     amount: bigint,
     to: PubKeyHash
@@ -89,29 +87,31 @@ export class SVer extends SmartContract {
     // checks senders details
     assert(
       this.balances[0].address == sender,
-      "Please allocate funds before transfer"
-    );
+      'Please allocate funds before transfer'
+    )
     assert(
       this.balances[0].balance >= amount,
-      "Not enough balance in Category"
-    );
-    assert(this.balances[0].category == _category, "Not the right category");
-    assert(hash160(sender_pubkey) == sender, "Check signature failed");
-    assert(this.checkSig(sig, sender_pubkey), "Check signature failed");
+      'Not enough balance in Category'
+    )
+    assert(this.balances[0].category == _category, 'Not the right category')
+    assert(hash160(sender_pubkey) == sender, 'Check signature failed')
 
     // Transfer amount is reflected t
-    this.balances[0].balance -= amount;
+    this.balances[0].balance -= amount
 
     // Update receivers data in the fixed array
-    this.balances[1] = { address: to, category: _category, balance: amount };
+    this.balances[1] = { address: to, category: _category, balance: amount }
 
-    let outputs = this.buildStateOutput(this.ctx.utxo.value);
-    outputs += Utils.buildPublicKeyHashOutput(hash160(sender_pubkey), amount);
-    outputs += this.buildChangeOutput();
+    let outputs = this.buildStateOutput(this.ctx.utxo.value)
+    outputs += Utils.buildPublicKeyHashOutput(
+      hash160(sender_pubkey),
+      amount
+    )
+    outputs += this.buildChangeOutput()
 
     assert(
       this.ctx.hashOutputs == hash256(outputs),
-      "Check hashOutputs failed"
-    );
+      'Check hashOutputs failed'
+    )
   }
 }
